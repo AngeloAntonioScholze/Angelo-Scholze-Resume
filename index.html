@@ -359,32 +359,18 @@ footer .ok { color: var(--gold); }
     return count;
   }
 
-  const targets = document.querySelectorAll('.reveal, .type');
+  document.querySelectorAll('.reveal').forEach(el => el.classList.add('go'));
 
-  if (reduced) {
-    targets.forEach(el => { el.style.opacity = 1; el.classList.add('go'); });
-    return;
-  }
+  if (reduced) return;
 
-  const io = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const el = entry.target;
-      if (el.classList.contains('type')) {
-        const perChar = el.classList.contains('type-header') ? PER_CHAR_HEADER
-          : el.classList.contains('type-body') ? PER_CHAR_BODY
-          : PER_CHAR;
-        const cursor = el.querySelector('.cursor');
-        const n = wrapChars(el, perChar);
-        if (cursor) cursor.style.animationDelay = ((n * perChar) / 1000) + 's';
-      } else {
-        el.classList.add('go');
-      }
-      obs.unobserve(el);
-    });
-  }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
-
-  targets.forEach(el => io.observe(el));
+  document.querySelectorAll('.type').forEach(el => {
+    const perChar = el.classList.contains('type-header') ? PER_CHAR_HEADER
+      : el.classList.contains('type-body') ? PER_CHAR_BODY
+      : PER_CHAR;
+    const cursor = el.querySelector('.cursor');
+    const n = wrapChars(el, perChar);
+    if (cursor) cursor.style.animationDelay = ((n * perChar) / 1000) + 's';
+  });
 })();
 </script>
 </body>

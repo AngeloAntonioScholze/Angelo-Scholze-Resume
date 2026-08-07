@@ -1,6 +1,5 @@
 import { Fragment, createElement, type CSSProperties, type ReactNode } from 'react';
 import type { Seg } from './data';
-import { useInView } from './useInView';
 
 export const PER_CHAR = 12;
 export const PER_CHAR_HEADER = 22;
@@ -8,18 +7,6 @@ export const PER_CHAR_BODY = 7;
 
 const delay = (index: number, perChar: number) =>
   ({ '--cd': `${(index * perChar) / 1000}s` }) as CSSProperties;
-
-function plain(segs: Seg[]): ReactNode[] {
-  return segs.map((seg, i) =>
-    typeof seg === 'string' ? (
-      <Fragment key={i}>{seg}</Fragment>
-    ) : (
-      <span key={i} className="gold">
-        {seg.gold}
-      </span>
-    ),
-  );
-}
 
 function typed(segs: Seg[], perChar: number): { nodes: ReactNode[]; count: number } {
   let count = 0;
@@ -58,23 +45,16 @@ export function Typed({
   className?: string;
   as?: Tag;
 }) {
-  const { ref, inView } = useInView<HTMLElement>();
-  return createElement(as, { ref, className }, inView ? typed(segs, perChar).nodes : plain(segs));
+  return createElement(as, { className }, typed(segs, perChar).nodes);
 }
 
 export function Cmdline({ text, cursor = false }: { text: string; cursor?: boolean }) {
-  const { ref, inView } = useInView<HTMLParagraphElement>();
   const { nodes, count } = typed([text], PER_CHAR);
   return (
-    <p ref={ref} className="cmdline">
+    <p className="cmdline">
       <span className="prompt">$</span>
-      {inView ? nodes : text}
-      {cursor && (
-        <span
-          className="cursor"
-          style={inView ? { animationDelay: `${(count * PER_CHAR) / 1000}s` } : undefined}
-        />
-      )}
+      {nodes}
+      {cursor && <span className="cursor" style={{ animationDelay: `${(count * PER_CHAR) / 1000}s` }} />}
     </p>
   );
 }
