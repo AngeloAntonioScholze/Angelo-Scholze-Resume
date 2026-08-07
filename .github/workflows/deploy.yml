@@ -25,10 +25,11 @@ jobs:
           node-version: 22
           cache: npm
 
-      # Not `npm ci`: the lockfile is authored on Windows and npm records only
-      # the platform's optional native binaries, so a linux runner would get no
-      # @rolldown/binding or lightningcss and the build would fail.
-      - run: npm install --no-audit --no-fund
+      # The committed lockfile is authored on Windows, and npm records only the
+      # host platform's optional native binaries. Both `npm ci` and `npm install`
+      # then honour it and leave a linux runner with no @rolldown/binding, so
+      # vite build dies loading the native addon. Resolve fresh for this platform.
+      - run: rm -f package-lock.json && npm install --no-audit --no-fund
 
       # Surface the failing tail as an annotation; raw logs need repo admin.
       - name: Build react
