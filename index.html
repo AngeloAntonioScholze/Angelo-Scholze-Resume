@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>angelo scholze — senior software engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a09;
+  --panel: #111110;
+  --line: #2a2a26;
+  --fg: #f4f1ea;
+  --dim: #c2a877;
+  --gold: #d3a355;
+  --gold-dim: #8a6a35;
+}
+html[data-theme="monokai"] {
+  --bg: #272822;
+  --panel: #2f302a;
+  --line: #49483e;
+  --fg: #f8f8f2;
+  --dim: #a1a196;
+  --gold: #a6e22e;
+  --gold-dim: #6b9c1f;
+  --pink: #f92672;
+  --blue: #66d9ef;
+  --yellow: #e6db74;
+  --orange: #fd971f;
+  --purple: #ae81ff;
+}
+html[data-theme="monokai"] a { color: var(--blue); }
+html[data-theme="monokai"] a:hover { color: var(--yellow); }
+html[data-theme="monokai"] .prompt { color: var(--pink); }
+html[data-theme="monokai"] .dots span:nth-child(3) { background: var(--pink); border-color: var(--pink); }
+html[data-theme="monokai"] .hero .role { color: var(--yellow); }
+html[data-theme="monokai"] .status .v.gilt { color: var(--orange); }
+html[data-theme="monokai"] .entry .name { color: var(--blue); }
+html[data-theme="monokai"] .chip { color: var(--purple); }
+html[data-theme="monokai"] .chip::before { color: var(--pink); }
+html[data-theme="monokai"] .btn { color: var(--bg); background: var(--pink); border-color: var(--pink); }
+html[data-theme="monokai"] .btn:hover { background: var(--fg); border-color: var(--fg); }
+html[data-theme="monokai"] .btn-outline { color: var(--blue); border-color: var(--blue); background: transparent; }
+html[data-theme="monokai"] .btn-outline:hover { color: var(--bg); background: var(--blue); }
+html[data-theme="monokai"] .theme-toggle { color: var(--dim); border-color: var(--line); background: transparent; }
+html[data-theme="monokai"] .theme-toggle:hover { color: var(--yellow); border-color: var(--yellow); background: transparent !important; }
+
+html[data-theme="dracula"] {
+  --bg: #282a36;
+  --panel: #343746;
+  --line: #44475a;
+  --fg: #f8f8f2;
+  --dim: #6272a4;
+  --gold: #bd93f9;
+  --gold-dim: #7c5cad;
+  --pink: #ff79c6;
+  --blue: #8be9fd;
+  --yellow: #f1fa8c;
+  --orange: #ffb86c;
+  --purple: #bd93f9;
+  --green: #50fa7b;
+  --red: #ff5555;
+}
+html[data-theme="dracula"] a { color: var(--blue); }
+html[data-theme="dracula"] a:hover { color: var(--yellow); }
+html[data-theme="dracula"] .prompt { color: var(--green); }
+html[data-theme="dracula"] .dots span:nth-child(3) { background: var(--pink); border-color: var(--pink); }
+html[data-theme="dracula"] .hero .role { color: var(--yellow); }
+html[data-theme="dracula"] .status .v.gilt { color: var(--orange); }
+html[data-theme="dracula"] .entry .name { color: var(--blue); }
+html[data-theme="dracula"] .chip { color: var(--purple); }
+html[data-theme="dracula"] .chip::before { color: var(--pink); }
+html[data-theme="dracula"] .btn { color: var(--bg); background: var(--pink); border-color: var(--pink); }
+html[data-theme="dracula"] .btn:hover { background: var(--fg); border-color: var(--fg); }
+html[data-theme="dracula"] .btn-outline { color: var(--blue); border-color: var(--blue); background: transparent; }
+html[data-theme="dracula"] .btn-outline:hover { color: var(--bg); background: var(--blue); }
+html[data-theme="dracula"] .theme-toggle { color: var(--dim); border-color: var(--line); background: transparent; }
+html[data-theme="dracula"] .theme-toggle:hover { color: var(--yellow); border-color: var(--yellow); background: transparent !important; }
+@keyframes lineIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.reveal { opacity: 0; animation: lineIn 0.6s ease forwards; animation-play-state: paused; }
+.reveal.go { animation-play-state: running; }
+@keyframes chIn { to { opacity: 1; } }
+.ch { opacity: 0; animation: chIn 1ms steps(1) forwards; animation-delay: var(--cd, 0s); }
+@media (prefers-reduced-motion: reduce) { .reveal { animation: none; opacity: 1; } .ch { animation: none; opacity: 1; } }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); }
+body {
+  color: var(--fg);
+  font-family: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 15px; line-height: 1.6;
+  background-image:
+    radial-gradient(ellipse at top, rgba(211,163,85,0.05), transparent 60%),
+    repeating-linear-gradient(to bottom, rgba(255,255,255,0.012) 0 1px, transparent 1px 3px);
+}
+a { color: var(--gold); text-decoration: none; }
+a:hover { color: var(--fg); text-decoration: underline; text-underline-offset: 3px; }
+.wrap { max-width: 980px; margin: 0 auto; padding: 0 var(--edge, clamp(16px,4vw,40px)); }
+#about, #experience, #skills, #contact { scroll-margin-top: 64px; }
+.cursor { display: inline-block; width: 0.55em; height: 1em; background: var(--gold); vertical-align: -0.15em; animation: blink 1s step-end infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.dim { color: var(--dim); }
+.gold { color: var(--gold); }
+.prompt { color: var(--gold); }
+hr.rule { border: 0; height: 1px; background: var(--line); margin: 0; }
+
+.termbar { border-bottom: 1px solid var(--line); background: var(--panel); position: sticky; top: 0; z-index: 5; }
+.termbar .row { display: flex; align-items: center; justify-content: space-between; padding: 14px var(--edge, clamp(16px,4vw,40px)); gap: 24px; flex-wrap: wrap; }
+.dots { display: flex; gap: 7px; }
+.dots span { width: 11px; height: 11px; border-radius: 50%; border: 1px solid var(--line); }
+.dots span:nth-child(3) { background: var(--gold); border-color: var(--gold); }
+.termtitle { color: var(--dim); font-size: 13px; }
+.projsw { display: flex; border: 1px solid var(--line); }
+.projsw .sw { color: var(--dim); font-size: 12px; padding: 5px 10px; border-right: 1px solid var(--line); text-decoration: none; }
+.projsw .sw:last-child { border-right: none; }
+.projsw .sw:hover { color: var(--gold); text-decoration: none; }
+.projsw .sw.is-active { color: var(--bg); background: var(--gold); }
+.termnav { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; }
+.termnav a { color: var(--dim); font-size: 13px; }
+.termnav a:hover { color: var(--gold); text-decoration: none; }
+.btn { font-family: inherit; font-size: 13px; color: var(--bg); background: var(--gold); border: 1px solid var(--gold); padding: 8px 14px; cursor: pointer; }
+.btn:hover { background: var(--fg); border-color: var(--fg); }
+.btn-outline { color: var(--gold); background: transparent; }
+.btn-outline:hover { color: var(--bg); background: var(--gold); }
+.theme-toggle { color: var(--dim); background: transparent; border: 1px solid var(--line); }
+.theme-toggle:hover { color: var(--gold); border-color: var(--gold); background: transparent !important; }
+
+.hero { padding: 64px 0 48px; }
+.hero .cmdline { color: var(--dim); font-size: 14px; margin: 0 0 18px; }
+.hero .cmdline .prompt { margin-right: 8px; }
+.hero h1 {
+  font-size: clamp(28px, 4.4vw, 46px); line-height: 1.25; font-weight: 700;
+  margin: 0 0 6px; letter-spacing: -0.01em;
+}
+.hero .role { color: var(--gold); font-size: clamp(16px, 2vw, 20px); font-weight: 600; margin: 0 0 20px; }
+.hero p.sub { max-width: 66ch; color: var(--fg); font-size: 15px; margin: 0 0 28px; }
+.hero .row { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.status { padding: 36px 0; }
+.status .cmdline { color: var(--dim); font-size: 14px; margin: 0 0 20px; }
+.status .grid { display: grid; grid-template-columns: repeat(4, auto); gap: 24px 32px; justify-content: space-between; }
+.status .k { font-size: 12px; color: var(--dim); text-transform: uppercase; letter-spacing: 0.06em; }
+.status .v { font-size: 30px; font-weight: 700; margin: 4px 0 0; }
+.status .v.gilt { color: var(--gold); }
+
+.about-full { padding: 40px 0 48px; }
+.about-full .cmdline { color: var(--dim); font-size: 14px; margin: 0 0 16px; }
+.about-full p.note { color: var(--fg); font-size: 14.5px; max-width: 72ch; margin: 0; }
+
+.services { padding: 40px 0; }
+.services .cmdline { color: var(--dim); font-size: 14px; margin: 0 0 22px; }
+.services .list { border: 1px solid var(--line); }
+.entry { padding: 20px 22px; border-bottom: 1px solid var(--line); }
+.entry:last-child { border-bottom: none; }
+.entry .toprow { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px 16px; }
+.entry .name { font-weight: 700; font-size: 16px; }
+.entry .name::before { content: "drwxr-xr-x  "; color: var(--dim); font-weight: 400; font-size: 13px; }
+.entry .dates { color: var(--dim); font-size: 13px; white-space: nowrap; }
+.entry p { margin: 8px 0 0; color: var(--fg); font-size: 14px; max-width: 68ch; }
+
+.skillsec { padding: 40px 0; }
+.skillsec .cmdline { color: var(--dim); font-size: 14px; margin: 0 0 20px; }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip { border: 1px solid var(--line); padding: 6px 12px; font-size: 13px; color: var(--fg); }
+.chip::before { content: "#"; color: var(--gold); margin-right: 4px; }
+
+.close { padding: 44px 0 56px; }
+.close .cmdline { color: var(--dim); font-size: 14px; margin: 0 0 12px; }
+.close h3 { font-size: 20px; margin: 0 0 18px; }
+.contactgrid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px 32px; max-width: 620px; margin: 0 0 26px; }
+.contactgrid .row2 { display: flex; gap: 10px; font-size: 14px; }
+.contactgrid .k { color: var(--dim); min-width: 78px; }
+
+footer { border-top: 1px solid var(--line); padding: 18px var(--edge, clamp(16px,4vw,40px)); color: var(--dim); font-size: 12px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+footer .ok { color: var(--gold); }
+
+@media (max-width: 720px) {
+  .status .grid { grid-template-columns: repeat(2, 1fr); }
+  .termnav a:not(.brand) { display: none; }
+  .contactgrid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="termbar reveal">
+  <div class="row">
+    <div style="display:flex; align-items:center; gap:16px;">
+      <span class="dots"><span></span><span></span><span></span></span>
+      <span class="termtitle">angelo@scholze:~/resume$</span>
+      <span class="projsw">
+        <span class="sw is-active" aria-current="page">html</span>
+        <a class="sw" href="react/dist/index.html">react</a>
+        <a class="sw" href="vue/dist/index.html">vue</a>
+      </span>
+    </div>
+    <nav class="termnav">
+      <a href="#about">./about</a>
+      <a href="#experience">./experience</a>
+      <a href="#skills">./skills</a>
+      <a href="#contact">./contact</a>
+      <a href="assets/angelo-scholze-resume.pdf" download><button type="button" class="btn">download resume</button></a>
+      <button type="button" class="btn theme-toggle" id="themeToggle">theme --monokai</button>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section class="hero">
+    <p class="cmdline type"><span class="prompt">$</span>whoami<span class="cursor"></span></p>
+    <h1 class="type type-header">Angelo Scholze</h1>
+    <p class="role type type-header">Full Stack Senior Flutter Developer</p>
+    <p class="sub type type-body">I am a Senior-Level Software Developer with <span class="gold">seven years</span> of experience, specializing primarily in mobile development using the <span class="gold">Flutter</span> framework, paired with full-stack work in <span class="gold">React</span>, <span class="gold">Next.js</span> and <span class="gold">Node.js</span>.</p>
+    <div class="row reveal">
+      <a href="assets/angelo-scholze-resume.pdf" download><button type="button" class="btn">download resume.pdf</button></a>
+      <a href="mailto:antonioscholze@gmail.com"><button type="button" class="btn btn-outline">email me</button></a>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <section class="status" aria-label="Angelo Scholze, by the numbers">
+    <p class="cmdline type"><span class="prompt">$</span>stat --career</p>
+    <div class="grid reveal">
+      <div><p class="k">years_experience</p><p class="v gilt">7</p></div>
+      <div><p class="k">companies</p><p class="v">5</p></div>
+      <div><p class="k">core_stack</p><p class="v">Flutter</p></div>
+      <div><p class="k">languages</p><p class="v">EN / FR</p></div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <section class="about-full" id="about">
+    <p class="cmdline type"><span class="prompt">$</span>cat about.md</p>
+    <p class="note type type-body">Seven years building mobile-first products in <span class="gold">Flutter</span> — <span class="gold">BloC</span>, <span class="gold">GetX</span>, <span class="gold">MobX</span>, <span class="gold">Provider</span> — paired with full-stack range across <span class="gold">React</span>, <span class="gold">Next.js</span> and <span class="gold">Node.js/Express</span>. Conversations and documentation entirely in English. Comfortable owning architecture end to end: <span class="gold">REST APIs</span>, <span class="gold">MongoDB/PostgreSQL</span>, <span class="gold">SOLID</span> principles, <span class="gold">Clean Code</span> and <span class="gold">TDD</span>, <span class="gold">Scrum</span> delivery. Also freelancing full-stack work on Fiverr since 2021. English fluent, French basic.</p>
+  </section>
+
+  <section class="services" id="experience">
+    <p class="cmdline type"><span class="prompt">$</span>ls -la experience/</p>
+    <div class="list">
+      <div class="entry">
+        <div class="toprow reveal"><span class="name">leading-edge-ag-solutions/</span><span class="dates">Aug 2025 — current</span></div>
+        <p class="type type-body">Senior Software Developer, <span class="gold">Flutter</span>. From-scratch to market development; complex web delivery using <span class="gold">Flutter</span> for full-stack; built with <span class="gold">MobX</span> and Modular libraries, <span class="gold">SOLID</span> principles and Clean Code.</p>
+      </div>
+      <div class="entry">
+        <div class="toprow reveal"><span class="name">ulist/</span><span class="dates">Aug 2023 — Aug 2025</span></div>
+        <p class="type type-body">Senior Software Developer, <span class="gold">Flutter</span>. Refactored and implemented the app UI; developed using <span class="gold">MobX</span> and Modular libraries with <span class="gold">SOLID</span> and Clean Code practices.</p>
+      </div>
+      <div class="entry">
+        <div class="toprow reveal"><span class="name">meta/</span><span class="dates">Mar 2023 — Aug 2023</span></div>
+        <p class="type type-body">Software Developer, <span class="gold">Flutter</span>. Built a data-crawling script and urban-mobility features with <span class="gold">Google Maps</span> and <span class="gold">Waze</span> deep-linking; new <span class="gold">BloC</span> state architecture over <span class="gold">REST APIs</span> and <span class="gold">PostgreSQL</span>.</p>
+      </div>
+      <div class="entry">
+        <div class="toprow reveal"><span class="name">ibf/</span><span class="dates">Aug 2021 — Nov 2021</span></div>
+        <p class="type type-body">Full Stack Developer. Development in <span class="gold">React</span>, <span class="gold">Next.js</span> and <span class="gold">Node.js</span> using <span class="gold">SOLID</span> principles and Clean Code; integration and development of <span class="gold">REST APIs</span> and webhooks.</p>
+      </div>
+      <div class="entry">
+        <div class="toprow reveal"><span class="name">wayv-tecnologia/</span><span class="dates">Nov 2021 — Feb 2023</span></div>
+        <p class="type type-body">Software Developer, <span class="gold">Flutter</span>. Migrated Flutter 1 to Flutter 3, built new <span class="gold">BloC</span>/<span class="gold">GetX</span> state architecture, integrated <span class="gold">REST APIs</span> and <span class="gold">MongoDB</span> under Scrum.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="skillsec" id="skills">
+    <p class="cmdline type"><span class="prompt">$</span>cat skills.txt</p>
+    <div class="chips reveal">
+      <span class="chip">Flutter — 7y</span>
+      <span class="chip">Dart — 7y</span>
+      <span class="chip">Git — 7y</span>
+      <span class="chip">SOLID — 6y</span>
+      <span class="chip">Clean Code — 5y</span>
+      <span class="chip">BloC — 5y</span>
+      <span class="chip">AppStore Admin — 4y</span>
+      <span class="chip">Provider — 3y</span>
+      <span class="chip">GetX — 3y</span>
+      <span class="chip">Firebase — 3y</span>
+      <span class="chip">JavaScript — 2y</span>
+      <span class="chip">MongoDB — 2y</span>
+      <span class="chip">Kotlin — 1y</span>
+      <span class="chip">TDD — 1y</span>
+      <span class="chip">React</span>
+      <span class="chip">Next.js</span>
+      <span class="chip">Node.js</span>
+      <span class="chip">PostgreSQL</span>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <section class="close" id="contact">
+    <p class="cmdline type"><span class="prompt">$</span>contact --me</p>
+    <h3 class="type type-header">Get in touch</h3>
+    <div class="contactgrid reveal">
+      <div class="row2"><span class="k">email</span><a href="mailto:antonioscholze@gmail.com">antonioscholze@gmail.com</a></div>
+      <div class="row2"><span class="k">phone</span><span>+55 41 99676-6899</span></div>
+      <div class="row2"><span class="k">linkedin</span><a href="https://www.linkedin.com/in/angelo-scholze/" target="_blank" rel="noopener">/in/angelo-scholze</a></div>
+      <div class="row2"><span class="k">github</span><a href="https://github.com/AngeloAntonioScholze" target="_blank" rel="noopener">/AngeloAntonioScholze</a></div>
+    </div>
+    <div class="row reveal">
+      <a href="assets/angelo-scholze-resume.pdf" download><button type="button" class="btn">download resume.pdf</button></a>
+      <a href="mailto:antonioscholze@gmail.com"><button type="button" class="btn btn-outline">email me</button></a>
+    </div>
+  </section>
+
+  <footer class="reveal">
+    <span>angelo-scholze v1.0.0</span>
+    <span class="ok">process exited 0</span>
+  </footer>
+</div>
+
+<script>
+(() => {
+  const btn = document.getElementById('themeToggle');
+  const themes = ['terminal', 'monokai', 'dracula'];
+  const nextLabel = { terminal: 'theme --monokai', monokai: 'theme --dracula', dracula: 'theme --terminal' };
+  function apply(theme) {
+    if (theme === 'terminal') delete document.documentElement.dataset.theme;
+    else document.documentElement.dataset.theme = theme;
+    btn.textContent = nextLabel[theme];
+  }
+  const saved = localStorage.getItem('resume-theme') || 'terminal';
+  apply(saved);
+  btn.addEventListener('click', () => {
+    const current = document.documentElement.dataset.theme || 'terminal';
+    const next = themes[(themes.indexOf(current) + 1) % themes.length];
+    apply(next);
+    localStorage.setItem('resume-theme', next);
+  });
+})();
+</script>
+<script>
+(() => {
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const PER_CHAR = 12, PER_CHAR_HEADER = 22, PER_CHAR_BODY = 7;
+
+  function wrapChars(el, perChar) {
+    let count = 0;
+    const walk = (n) => {
+      if (n.nodeType === Node.TEXT_NODE) {
+        const frag = document.createDocumentFragment();
+        for (const ch of n.textContent) {
+          const span = document.createElement('span');
+          span.className = 'ch';
+          span.textContent = ch;
+          span.style.setProperty('--cd', ((count * perChar) / 1000) + 's');
+          frag.appendChild(span);
+          count++;
+        }
+        n.parentNode.replaceChild(frag, n);
+      } else if (n.nodeType === Node.ELEMENT_NODE) {
+        if (n.classList.contains('prompt') || n.classList.contains('cursor')) return;
+        [...n.childNodes].forEach(walk);
+      }
+    };
+    [...el.childNodes].forEach(walk);
+    return count;
+  }
+
+  const targets = document.querySelectorAll('.reveal, .type');
+
+  if (reduced) {
+    targets.forEach(el => { el.style.opacity = 1; el.classList.add('go'); });
+    return;
+  }
+
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      if (el.classList.contains('type')) {
+        const perChar = el.classList.contains('type-header') ? PER_CHAR_HEADER
+          : el.classList.contains('type-body') ? PER_CHAR_BODY
+          : PER_CHAR;
+        const cursor = el.querySelector('.cursor');
+        const n = wrapChars(el, perChar);
+        if (cursor) cursor.style.animationDelay = ((n * perChar) / 1000) + 's';
+      } else {
+        el.classList.add('go');
+      }
+      obs.unobserve(el);
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+
+  targets.forEach(el => io.observe(el));
+})();
+</script>
+</body>
+</html>
