@@ -25,7 +25,10 @@ jobs:
           node-version: 22
           cache: npm
 
-      - run: npm ci
+      # Not `npm ci`: the lockfile is authored on Windows and npm records only
+      # the platform's optional native binaries, so a linux runner would get no
+      # @rolldown/binding or lightningcss and the build would fail.
+      - run: npm install --no-audit --no-fund
 
       - run: npm run build
 
