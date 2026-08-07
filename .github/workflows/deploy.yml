@@ -31,22 +31,7 @@ jobs:
       # vite build dies loading the native addon. Resolve fresh for this platform.
       - run: rm -f package-lock.json && npm install --no-audit --no-fund
 
-      # Surface the failing tail as an annotation; raw logs need repo admin.
-      - name: Build react
-        run: |
-          set -o pipefail
-          npm run build -w react 2>&1 | tee /tmp/react.log || {
-            echo "::error title=react build failed::$(tail -n 25 /tmp/react.log | tr '\n' ' | ' | cut -c1-900)"
-            exit 1
-          }
-
-      - name: Build vue
-        run: |
-          set -o pipefail
-          npm run build -w vue 2>&1 | tee /tmp/vue.log || {
-            echo "::error title=vue build failed::$(tail -n 25 /tmp/vue.log | tr '\n' ' | ' | cut -c1-900)"
-            exit 1
-          }
+      - run: npm run build
 
       - run: npm run assemble
 
