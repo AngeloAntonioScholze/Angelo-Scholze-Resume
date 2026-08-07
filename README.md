@@ -11,6 +11,7 @@ index.html      static build — no tooling, open it directly
 react/          React 19 + Vite
 vue/            Vue 3 + Vite
 assets/         resume PDF
+scripts/        assemble.mjs — builds the deployed site/ layout
 ```
 
 `react/` and `vue/` are npm workspaces of the repo root.
@@ -39,17 +40,36 @@ and `v-html`.
 ## Switching between the three
 
 Each page has an `[html] [react] [vue]` switcher in the terminal bar. The links
-are relative to each build's served location, so they resolve only when all
-three are served together from the repo root:
+are relative, so they work both at a domain root and under a GitHub Pages
+project subpath. They resolve against the *assembled* layout:
+
+```
+/            index.html   (static)
+/react/      React build
+/vue/        Vue build
+```
+
+To reproduce that layout locally:
 
 ```bash
 npm run build
-python -m http.server 8000   # then open http://localhost:8000/index.html
+npm run assemble          # -> site/
+cd site && python -m http.server 8000
 ```
 
-They do **not** resolve under `npm run dev:*`, where the app is served at `/`
-and the `../../` paths escape the server root. `react/dist/` and `vue/dist/`
-are gitignored, so a fresh clone needs `npm run build` before the switcher works.
+The switcher does **not** resolve under `npm run dev:*`, where a single app is
+served alone at `/` and the `../` paths escape the server root. Use `dev` for
+working on one implementation, `assemble` to check the switcher.
+
+## Deployment
+
+Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds both
+workspaces, runs the same `npm run assemble`, and publishes `site/` to GitHub
+Pages. Build output is never committed — `dist/` and `site/` are gitignored, so
+the published site cannot drift from the source.
+
+`scripts/assemble.mjs` is the single definition of the deployed layout; CI and
+local preview both call it, so they cannot disagree.
 
 ## Notes
 
