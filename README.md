@@ -10,7 +10,7 @@ implementations you can diff against each other.
 index.html      static build — no tooling, open it directly
 react/          React 19 + Vite
 vue/            Vue 3 + Vite
-assets/         resume PDF
+assets/         resume PDF, favicons, webmanifest
 scripts/        assemble.mjs — builds the deployed site/ layout
 ```
 
