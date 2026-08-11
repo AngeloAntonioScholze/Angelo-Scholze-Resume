@@ -44,8 +44,8 @@ html[data-theme="monokai"] .btn { color: var(--bg); background: var(--pink); bor
 html[data-theme="monokai"] .btn:hover { background: var(--fg); border-color: var(--fg); }
 html[data-theme="monokai"] .btn-outline { color: var(--blue); border-color: var(--blue); background: transparent; }
 html[data-theme="monokai"] .btn-outline:hover { color: var(--bg); background: var(--blue); }
-html[data-theme="monokai"] .theme-toggle { color: var(--dim); border-color: var(--line); background: transparent; }
-html[data-theme="monokai"] .theme-toggle:hover { color: var(--yellow); border-color: var(--yellow); background: transparent !important; }
+html[data-theme="monokai"] .btn-ghost { color: var(--dim); border-color: var(--line); background: transparent; }
+html[data-theme="monokai"] .btn-ghost:hover { color: var(--yellow); border-color: var(--yellow); background: transparent !important; }
 
 html[data-theme="dracula"] {
   --bg: #282a36;
@@ -76,8 +76,8 @@ html[data-theme="dracula"] .btn { color: var(--bg); background: var(--pink); bor
 html[data-theme="dracula"] .btn:hover { background: var(--fg); border-color: var(--fg); }
 html[data-theme="dracula"] .btn-outline { color: var(--blue); border-color: var(--blue); background: transparent; }
 html[data-theme="dracula"] .btn-outline:hover { color: var(--bg); background: var(--blue); }
-html[data-theme="dracula"] .theme-toggle { color: var(--dim); border-color: var(--line); background: transparent; }
-html[data-theme="dracula"] .theme-toggle:hover { color: var(--yellow); border-color: var(--yellow); background: transparent !important; }
+html[data-theme="dracula"] .btn-ghost { color: var(--dim); border-color: var(--line); background: transparent; }
+html[data-theme="dracula"] .btn-ghost:hover { color: var(--yellow); border-color: var(--yellow); background: transparent !important; }
 @keyframes lineIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 .reveal { opacity: 0; animation: lineIn 0.6s ease forwards; animation-play-state: paused; }
 .reveal.go { animation-play-state: running; }
@@ -124,8 +124,8 @@ hr.rule { border: 0; height: 1px; background: var(--line); margin: 0; }
 .btn:hover { background: var(--fg); border-color: var(--fg); }
 .btn-outline { color: var(--gold); background: transparent; }
 .btn-outline:hover { color: var(--bg); background: var(--gold); }
-.theme-toggle { color: var(--dim); background: transparent; border: 1px solid var(--line); }
-.theme-toggle:hover { color: var(--gold); border-color: var(--gold); background: transparent !important; }
+.btn-ghost { color: var(--dim); background: transparent; border: 1px solid var(--line); }
+.btn-ghost:hover { color: var(--gold); border-color: var(--gold); background: transparent !important; }
 
 .hero { padding: 64px 0 48px; }
 .hero .cmdline { color: var(--dim); font-size: 14px; margin: 0 0 18px; }
@@ -183,6 +183,7 @@ footer .ok { color: var(--gold); }
   .termbar .row { gap: 12px; }
   .termbrand { gap: 12px; }
   .termtitle { display: none; }
+  .termnav .dl { display: none; }
 }
 </style>
 </head>
@@ -200,12 +201,13 @@ footer .ok { color: var(--gold); }
       </span>
     </div>
     <nav class="termnav">
-      <a href="#about">./about</a>
-      <a href="#experience">./experience</a>
-      <a href="#skills">./skills</a>
-      <a href="#contact">./contact</a>
-      <a href="assets/angelo-scholze-resume.pdf" download><button type="button" class="btn">download resume</button></a>
-      <button type="button" class="btn theme-toggle" id="themeToggle">theme --monokai</button>
+      <a href="#about" data-i18n="nav.about">./about</a>
+      <a href="#experience" data-i18n="nav.experience">./experience</a>
+      <a href="#skills" data-i18n="nav.skills">./skills</a>
+      <a href="#contact" data-i18n="nav.contact">./contact</a>
+      <a class="dl" href="assets/angelo-scholze-resume.pdf" download><button type="button" class="btn" data-i18n="ui.download">download resume</button></a>
+      <button type="button" class="btn btn-ghost" id="langToggle">lang --pt</button>
+      <button type="button" class="btn btn-ghost" id="themeToggle">theme --monokai</button>
     </nav>
   </div>
 </div>
@@ -215,11 +217,11 @@ footer .ok { color: var(--gold); }
   <section class="hero">
     <p class="cmdline type"><span class="prompt">$</span>whoami<span class="cursor"></span></p>
     <h1 class="type type-header">Angelo Scholze</h1>
-    <p class="role type type-header">Full Stack Senior Flutter Developer</p>
-    <p class="sub type type-body">I am a Senior-Level Software Developer with <span class="gold">seven years</span> of experience, specializing primarily in mobile development using the <span class="gold">Flutter</span> framework, paired with full-stack work in <span class="gold">React</span>, <span class="gold">Next.js</span> and <span class="gold">Node.js</span>.</p>
+    <p class="role type type-header" data-i18n="hero.role">Full Stack Senior Flutter Developer</p>
+    <p class="sub type type-body" data-i18n="hero.sub">I am a Senior-Level Software Developer with <span class="gold">seven years</span> of experience, specializing primarily in mobile development using the <span class="gold">Flutter</span> framework, paired with full-stack work in <span class="gold">React</span>, <span class="gold">Next.js</span> and <span class="gold">Node.js</span>.</p>
     <div class="row reveal">
-      <a href="assets/angelo-scholze-resume.pdf" download><button type="button" class="btn">download resume.pdf</button></a>
-      <a href="mailto:antonioscholze@gmail.com"><button type="button" class="btn btn-outline">email me</button></a>
+      <a href="assets/angelo-scholze-resume.pdf" download><button type="button" class="btn" data-i18n="ui.downloadPdf">download resume.pdf</button></a>
+      <a href="mailto:antonioscholze@gmail.com"><button type="button" class="btn btn-outline" data-i18n="ui.emailMe">email me</button></a>
     </div>
   </section>
 
@@ -228,10 +230,10 @@ footer .ok { color: var(--gold); }
   <section class="status" aria-label="Angelo Scholze, by the numbers">
     <p class="cmdline type"><span class="prompt">$</span>stat --career</p>
     <div class="grid reveal">
-      <div><p class="k">years_experience</p><p class="v gilt">7</p></div>
-      <div><p class="k">companies</p><p class="v">5</p></div>
-      <div><p class="k">core_stack</p><p class="v">Flutter</p></div>
-      <div><p class="k">languages</p><p class="v">EN / PT / FR</p></div>
+      <div><p class="k" data-i18n="stat.years">years_experience</p><p class="v gilt">7</p></div>
+      <div><p class="k" data-i18n="stat.companies">companies</p><p class="v">5</p></div>
+      <div><p class="k" data-i18n="stat.stack">core_stack</p><p class="v">Flutter</p></div>
+      <div><p class="k" data-i18n="stat.languages">languages</p><p class="v">EN / PT / FR</p></div>
     </div>
   </section>
 
@@ -239,38 +241,38 @@ footer .ok { color: var(--gold); }
 
   <section class="about-full" id="about">
     <p class="cmdline type"><span class="prompt">$</span>cat about.md</p>
-    <p class="note type type-body">Seven years building mobile-first products in <span class="gold">Flutter</span> — <span class="gold">BloC</span>, <span class="gold">GetX</span>, <span class="gold">MobX</span>, <span class="gold">Provider</span> — paired with full-stack range across <span class="gold">React</span>, <span class="gold">Next.js</span> and <span class="gold">Node.js/Express</span>. Conversations and documentation entirely in English. Comfortable owning architecture end to end: <span class="gold">REST APIs</span>, <span class="gold">MongoDB/PostgreSQL</span>, <span class="gold">SOLID</span> principles, <span class="gold">Clean Code</span> and <span class="gold">TDD</span>, <span class="gold">Scrum</span> delivery. Also freelancing full-stack work on Fiverr since 2021. English fluent, French basic.</p>
+    <p class="note type type-body" data-i18n="about">Seven years building mobile-first products in <span class="gold">Flutter</span> — <span class="gold">BloC</span>, <span class="gold">GetX</span>, <span class="gold">MobX</span>, <span class="gold">Provider</span> — paired with full-stack range across <span class="gold">React</span>, <span class="gold">Next.js</span> and <span class="gold">Node.js/Express</span>. Conversations and documentation entirely in English. Comfortable owning architecture end to end: <span class="gold">REST APIs</span>, <span class="gold">MongoDB/PostgreSQL</span>, <span class="gold">SOLID</span> principles, <span class="gold">Clean Code</span> and <span class="gold">TDD</span>, <span class="gold">Scrum</span> delivery. Also freelancing full-stack work on Fiverr since 2021. Portuguese native, English fluent, French basic.</p>
   </section>
 
   <section class="services" id="experience">
     <p class="cmdline type"><span class="prompt">$</span>ls -la experience/</p>
     <div class="list">
       <div class="entry">
-        <div class="toprow reveal"><span class="name">leading-edge-ag-solutions/</span><span class="dates">Aug 2025 — current</span></div>
-        <p class="type type-body">Senior Software Developer, <span class="gold">Flutter</span>. From-scratch to market development; complex web delivery using <span class="gold">Flutter</span> for full-stack; built with <span class="gold">MobX</span> and Modular libraries, <span class="gold">SOLID</span> principles and Clean Code.</p>
+        <div class="toprow reveal"><span class="name">leading-edge-ag-solutions/</span><span class="dates" data-i18n="exp0.dates">Aug 2025 — current</span></div>
+        <p class="type type-body" data-i18n="exp0.body">Senior Software Developer, <span class="gold">Flutter</span>. From-scratch to market development; complex web delivery using <span class="gold">Flutter</span> for full-stack; built with <span class="gold">MobX</span> and Modular libraries, <span class="gold">SOLID</span> principles and Clean Code.</p>
       </div>
       <div class="entry">
-        <div class="toprow reveal"><span class="name">ulist/</span><span class="dates">Aug 2023 — Aug 2025</span></div>
-        <p class="type type-body">Senior Software Developer, <span class="gold">Flutter</span>. Refactored and implemented the app UI; developed using <span class="gold">MobX</span> and Modular libraries with <span class="gold">SOLID</span> and Clean Code practices.</p>
+        <div class="toprow reveal"><span class="name">ulist/</span><span class="dates" data-i18n="exp1.dates">Aug 2023 — Aug 2025</span></div>
+        <p class="type type-body" data-i18n="exp1.body">Senior Software Developer, <span class="gold">Flutter</span>. Refactored and implemented the app UI; developed using <span class="gold">MobX</span> and Modular libraries with <span class="gold">SOLID</span> and Clean Code practices.</p>
       </div>
       <div class="entry">
-        <div class="toprow reveal"><span class="name">meta/</span><span class="dates">Mar 2023 — Aug 2023</span></div>
-        <p class="type type-body">Software Developer, <span class="gold">Flutter</span>. Built a data-crawling script and urban-mobility features with <span class="gold">Google Maps</span> and <span class="gold">Waze</span> deep-linking; new <span class="gold">BloC</span> state architecture over <span class="gold">REST APIs</span> and <span class="gold">PostgreSQL</span>.</p>
+        <div class="toprow reveal"><span class="name">meta/</span><span class="dates" data-i18n="exp2.dates">Mar 2023 — Aug 2023</span></div>
+        <p class="type type-body" data-i18n="exp2.body">Software Developer, <span class="gold">Flutter</span>. Built a data-crawling script and urban-mobility features with <span class="gold">Google Maps</span> and <span class="gold">Waze</span> deep-linking; new <span class="gold">BloC</span> state architecture over <span class="gold">REST APIs</span> and <span class="gold">PostgreSQL</span>.</p>
       </div>
       <div class="entry">
-        <div class="toprow reveal"><span class="name">ibf/</span><span class="dates">Aug 2021 — Nov 2021</span></div>
-        <p class="type type-body">Full Stack Developer. Development in <span class="gold">React</span>, <span class="gold">Next.js</span> and <span class="gold">Node.js</span> using <span class="gold">SOLID</span> principles and Clean Code; integration and development of <span class="gold">REST APIs</span> and webhooks.</p>
+        <div class="toprow reveal"><span class="name">ibf/</span><span class="dates" data-i18n="exp3.dates">Aug 2021 — Nov 2021</span></div>
+        <p class="type type-body" data-i18n="exp3.body">Full Stack Developer. Development in <span class="gold">React</span>, <span class="gold">Next.js</span> and <span class="gold">Node.js</span> using <span class="gold">SOLID</span> principles and Clean Code; integration and development of <span class="gold">REST APIs</span> and webhooks.</p>
       </div>
       <div class="entry">
-        <div class="toprow reveal"><span class="name">wayv-tecnologia/</span><span class="dates">Nov 2021 — Feb 2023</span></div>
-        <p class="type type-body">Software Developer, <span class="gold">Flutter</span>. Migrated Flutter 1 to Flutter 3, built new <span class="gold">BloC</span>/<span class="gold">GetX</span> state architecture, integrated <span class="gold">REST APIs</span> and <span class="gold">MongoDB</span> under Scrum.</p>
+        <div class="toprow reveal"><span class="name">wayv-tecnologia/</span><span class="dates" data-i18n="exp4.dates">Nov 2021 — Feb 2023</span></div>
+        <p class="type type-body" data-i18n="exp4.body">Software Developer, <span class="gold">Flutter</span>. Migrated Flutter 1 to Flutter 3, built new <span class="gold">BloC</span>/<span class="gold">GetX</span> state architecture, integrated <span class="gold">REST APIs</span> and <span class="gold">MongoDB</span> under Scrum.</p>
       </div>
     </div>
   </section>
 
   <section class="skillsec" id="skills">
     <p class="cmdline type"><span class="prompt">$</span>cat skills.txt</p>
-    <div class="chips reveal">
+    <div class="chips reveal" data-i18n="skills">
       <span class="chip">Flutter — 7y</span>
       <span class="chip">Dart — 7y</span>
       <span class="chip">Git — 7y</span>
@@ -296,16 +298,16 @@ footer .ok { color: var(--gold); }
 
   <section class="close" id="contact">
     <p class="cmdline type"><span class="prompt">$</span>contact --me</p>
-    <h3 class="type type-header">Get in touch</h3>
+    <h3 class="type type-header" data-i18n="ui.getInTouch">Get in touch</h3>
     <div class="contactgrid reveal">
       <div class="row2"><span class="k">email</span><a href="mailto:antonioscholze@gmail.com">antonioscholze@gmail.com</a></div>
-      <div class="row2"><span class="k">phone</span><span>+55 41 99676-6899</span></div>
+      <div class="row2"><span class="k" data-i18n="contact.phone">phone</span><span>+55 41 99676-6899</span></div>
       <div class="row2"><span class="k">linkedin</span><a href="https://www.linkedin.com/in/angelo-scholze/" target="_blank" rel="noopener">/in/angelo-scholze</a></div>
       <div class="row2"><span class="k">github</span><a href="https://github.com/AngeloAntonioScholze" target="_blank" rel="noopener">/AngeloAntonioScholze</a></div>
     </div>
     <div class="row reveal">
-      <a href="assets/angelo-scholze-resume.pdf" download><button type="button" class="btn">download resume.pdf</button></a>
-      <a href="mailto:antonioscholze@gmail.com"><button type="button" class="btn btn-outline">email me</button></a>
+      <a href="assets/angelo-scholze-resume.pdf" download><button type="button" class="btn" data-i18n="ui.downloadPdf">download resume.pdf</button></a>
+      <a href="mailto:antonioscholze@gmail.com"><button type="button" class="btn btn-outline" data-i18n="ui.emailMe">email me</button></a>
     </div>
   </section>
 
@@ -363,17 +365,109 @@ footer .ok { color: var(--gold); }
     return count;
   }
 
-  document.querySelectorAll('.reveal').forEach(el => el.classList.add('go'));
+  function typeAll() {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('go'));
+    if (reduced) return;
+    document.querySelectorAll('.type').forEach(el => {
+      const perChar = el.classList.contains('type-header') ? PER_CHAR_HEADER
+        : el.classList.contains('type-body') ? PER_CHAR_BODY
+        : PER_CHAR;
+      const cursor = el.querySelector('.cursor');
+      const n = wrapChars(el, perChar);
+      if (cursor) cursor.style.animationDelay = ((n * perChar) / 1000) + 's';
+    });
+  }
 
-  if (reduced) return;
+  const SKILLS_A = ['Flutter — 7a', 'Dart — 7a', 'Git — 7a', 'SOLID — 6a', 'Clean Code — 5a', 'BloC — 5a',
+    'AppStore Admin — 4a', 'Provider — 3a', 'GetX — 3a', 'Firebase — 3a', 'JavaScript — 2a', 'MongoDB — 2a',
+    'Kotlin — 1a', 'TDD — 1a', 'React', 'Next.js', 'Node.js', 'PostgreSQL']
+    .map(s => `<span class="chip">${s}</span>`).join('\n      ');
 
-  document.querySelectorAll('.type').forEach(el => {
-    const perChar = el.classList.contains('type-header') ? PER_CHAR_HEADER
-      : el.classList.contains('type-body') ? PER_CHAR_BODY
-      : PER_CHAR;
-    const cursor = el.querySelector('.cursor');
-    const n = wrapChars(el, perChar);
-    if (cursor) cursor.style.animationDelay = ((n * perChar) / 1000) + 's';
+  const I18N = {
+    pt: {
+      'nav.about': './sobre',
+      'nav.experience': './experiencia',
+      'nav.skills': './habilidades',
+      'nav.contact': './contato',
+      'ui.download': 'baixar curriculo',
+      'ui.downloadPdf': 'baixar curriculo.pdf',
+      'ui.emailMe': 'me enviar email',
+      'ui.getInTouch': 'Entre em contato',
+      'hero.role': 'Desenvolvedor Flutter Sênior Full Stack',
+      'hero.sub': 'Sou Desenvolvedor de Software Sênior com <span class="gold">sete anos</span> de experiência, especializado principalmente em desenvolvimento mobile com o framework <span class="gold">Flutter</span>, somado a trabalho full-stack em <span class="gold">React</span>, <span class="gold">Next.js</span> e <span class="gold">Node.js</span>.',
+      'stat.years': 'anos_experiencia',
+      'stat.companies': 'empresas',
+      'stat.stack': 'stack_principal',
+      'stat.languages': 'idiomas',
+      'about': 'Sete anos construindo produtos mobile-first em <span class="gold">Flutter</span> — <span class="gold">BloC</span>, <span class="gold">GetX</span>, <span class="gold">MobX</span>, <span class="gold">Provider</span> — somados a alcance full-stack em <span class="gold">React</span>, <span class="gold">Next.js</span> e <span class="gold">Node.js/Express</span>. Conversas e documentação inteiramente em inglês. Confortável assumindo a arquitetura de ponta a ponta: <span class="gold">REST APIs</span>, <span class="gold">MongoDB/PostgreSQL</span>, princípios <span class="gold">SOLID</span>, <span class="gold">Clean Code</span> e <span class="gold">TDD</span>, entregas em <span class="gold">Scrum</span>. Também trabalho freelance full-stack no Fiverr desde 2021. Português nativo, inglês fluente, francês básico.',
+      'exp0.dates': 'Ago 2025 — atual',
+      'exp0.body': 'Desenvolvedor de Software Sênior, <span class="gold">Flutter</span>. Desenvolvimento do zero até o mercado; entrega web complexa usando <span class="gold">Flutter</span> em full-stack; construído com as bibliotecas <span class="gold">MobX</span> e Modular, princípios <span class="gold">SOLID</span> e Clean Code.',
+      'exp1.dates': 'Ago 2023 — Ago 2025',
+      'exp1.body': 'Desenvolvedor de Software Sênior, <span class="gold">Flutter</span>. Refatoração e implementação da UI do app; desenvolvimento com as bibliotecas <span class="gold">MobX</span> e Modular, com práticas <span class="gold">SOLID</span> e Clean Code.',
+      'exp2.dates': 'Mar 2023 — Ago 2023',
+      'exp2.body': 'Desenvolvedor de Software, <span class="gold">Flutter</span>. Script de coleta de dados e funcionalidades de mobilidade urbana com deep-linking do <span class="gold">Google Maps</span> e <span class="gold">Waze</span>; nova arquitetura de estado <span class="gold">BloC</span> sobre <span class="gold">REST APIs</span> e <span class="gold">PostgreSQL</span>.',
+      'exp3.dates': 'Ago 2021 — Nov 2021',
+      'exp3.body': 'Desenvolvedor Full Stack. Desenvolvimento em <span class="gold">React</span>, <span class="gold">Next.js</span> e <span class="gold">Node.js</span> com princípios <span class="gold">SOLID</span> e Clean Code; integração e desenvolvimento de <span class="gold">REST APIs</span> e webhooks.',
+      'exp4.dates': 'Nov 2021 — Fev 2023',
+      'exp4.body': 'Desenvolvedor de Software, <span class="gold">Flutter</span>. Migração de Flutter 1 para Flutter 3, nova arquitetura de estado <span class="gold">BloC</span>/<span class="gold">GetX</span>, integração de <span class="gold">REST APIs</span> e <span class="gold">MongoDB</span> sob Scrum.',
+      'skills': SKILLS_A,
+      'contact.phone': 'telefone',
+    },
+    fr: {
+      'nav.about': './apropos',
+      'nav.experience': './experience',
+      'nav.skills': './competences',
+      'nav.contact': './contact',
+      'ui.download': 'telecharger cv',
+      'ui.downloadPdf': 'telecharger cv.pdf',
+      'ui.emailMe': 'me contacter',
+      'ui.getInTouch': 'Me contacter',
+      'hero.role': 'Développeur Flutter Senior Full Stack',
+      'hero.sub': 'Je suis développeur logiciel senior avec <span class="gold">sept ans</span> d\'expérience, spécialisé principalement en développement mobile avec le framework <span class="gold">Flutter</span>, complété par du travail full-stack en <span class="gold">React</span>, <span class="gold">Next.js</span> et <span class="gold">Node.js</span>.',
+      'stat.years': 'annees_experience',
+      'stat.companies': 'entreprises',
+      'stat.stack': 'stack_principale',
+      'stat.languages': 'langues',
+      'about': 'Sept ans à construire des produits mobile-first en <span class="gold">Flutter</span> — <span class="gold">BloC</span>, <span class="gold">GetX</span>, <span class="gold">MobX</span>, <span class="gold">Provider</span> — complétés par une portée full-stack sur <span class="gold">React</span>, <span class="gold">Next.js</span> et <span class="gold">Node.js/Express</span>. Échanges et documentation entièrement en anglais. À l\'aise pour porter l\'architecture de bout en bout : <span class="gold">REST APIs</span>, <span class="gold">MongoDB/PostgreSQL</span>, principes <span class="gold">SOLID</span>, <span class="gold">Clean Code</span> et <span class="gold">TDD</span>, livraison en <span class="gold">Scrum</span>. Également freelance full-stack sur Fiverr depuis 2021. Portugais natif, anglais courant, français basique.',
+      'exp0.dates': 'Août 2025 — actuel',
+      'exp0.body': 'Développeur logiciel senior, <span class="gold">Flutter</span>. Développement de zéro jusqu\'au marché ; livraison web complexe avec <span class="gold">Flutter</span> en full-stack ; construit avec les bibliothèques <span class="gold">MobX</span> et Modular, principes <span class="gold">SOLID</span> et Clean Code.',
+      'exp1.dates': 'Août 2023 — Août 2025',
+      'exp1.body': 'Développeur logiciel senior, <span class="gold">Flutter</span>. Refonte et implémentation de l\'UI de l\'app ; développement avec les bibliothèques <span class="gold">MobX</span> et Modular, pratiques <span class="gold">SOLID</span> et Clean Code.',
+      'exp2.dates': 'Mars 2023 — Août 2023',
+      'exp2.body': 'Développeur logiciel, <span class="gold">Flutter</span>. Script de collecte de données et fonctionnalités de mobilité urbaine avec deep-linking <span class="gold">Google Maps</span> et <span class="gold">Waze</span> ; nouvelle architecture d\'état <span class="gold">BloC</span> sur <span class="gold">REST APIs</span> et <span class="gold">PostgreSQL</span>.',
+      'exp3.dates': 'Août 2021 — Nov 2021',
+      'exp3.body': 'Développeur full stack. Développement en <span class="gold">React</span>, <span class="gold">Next.js</span> et <span class="gold">Node.js</span> avec principes <span class="gold">SOLID</span> et Clean Code ; intégration et développement de <span class="gold">REST APIs</span> et webhooks.',
+      'exp4.dates': 'Nov 2021 — Févr 2023',
+      'exp4.body': 'Développeur logiciel, <span class="gold">Flutter</span>. Migration de Flutter 1 vers Flutter 3, nouvelle architecture d\'état <span class="gold">BloC</span>/<span class="gold">GetX</span>, intégration de <span class="gold">REST APIs</span> et <span class="gold">MongoDB</span> en Scrum.',
+      'skills': SKILLS_A,
+      'contact.phone': 'telephone',
+    },
+  };
+
+  const LANGS = ['en', 'pt', 'fr'];
+  const NEXT_LANG = { en: 'lang --pt', pt: 'lang --fr', fr: 'lang --en' };
+  const langBtn = document.getElementById('langToggle');
+  const nodes = [...document.querySelectorAll('[data-i18n], .type')];
+  const original = new Map(nodes.map(el => [el, el.innerHTML]));
+
+  function applyLang(lang) {
+    const table = I18N[lang] || {};
+    nodes.forEach(el => {
+      const key = el.dataset.i18n;
+      el.innerHTML = (key && table[key]) || original.get(el);
+    });
+    document.documentElement.lang = lang;
+    langBtn.textContent = NEXT_LANG[lang];
+    typeAll();
+  }
+
+  const savedLang = localStorage.getItem('resume-lang');
+  applyLang(LANGS.includes(savedLang) ? savedLang : 'en');
+
+  langBtn.addEventListener('click', () => {
+    const next = LANGS[(LANGS.indexOf(document.documentElement.lang) + 1) % LANGS.length];
+    applyLang(next);
+    localStorage.setItem('resume-lang', next);
   });
 })();
 </script>

@@ -34,8 +34,8 @@ html[data-theme="monokai"] .btn { color: var(--bg); background: var(--pink); bor
 html[data-theme="monokai"] .btn:hover { background: var(--fg); border-color: var(--fg); }
 html[data-theme="monokai"] .btn-outline { color: var(--blue); border-color: var(--blue); background: transparent; }
 html[data-theme="monokai"] .btn-outline:hover { color: var(--bg); background: var(--blue); }
-html[data-theme="monokai"] .theme-toggle { color: var(--dim); border-color: var(--line); background: transparent; }
-html[data-theme="monokai"] .theme-toggle:hover { color: var(--yellow); border-color: var(--yellow); background: transparent !important; }
+html[data-theme="monokai"] .btn-ghost { color: var(--dim); border-color: var(--line); background: transparent; }
+html[data-theme="monokai"] .btn-ghost:hover { color: var(--yellow); border-color: var(--yellow); background: transparent !important; }
 
 html[data-theme="dracula"] {
   --bg: #282a36;
@@ -66,8 +66,8 @@ html[data-theme="dracula"] .btn { color: var(--bg); background: var(--pink); bor
 html[data-theme="dracula"] .btn:hover { background: var(--fg); border-color: var(--fg); }
 html[data-theme="dracula"] .btn-outline { color: var(--blue); border-color: var(--blue); background: transparent; }
 html[data-theme="dracula"] .btn-outline:hover { color: var(--bg); background: var(--blue); }
-html[data-theme="dracula"] .theme-toggle { color: var(--dim); border-color: var(--line); background: transparent; }
-html[data-theme="dracula"] .theme-toggle:hover { color: var(--yellow); border-color: var(--yellow); background: transparent !important; }
+html[data-theme="dracula"] .btn-ghost { color: var(--dim); border-color: var(--line); background: transparent; }
+html[data-theme="dracula"] .btn-ghost:hover { color: var(--yellow); border-color: var(--yellow); background: transparent !important; }
 
 @keyframes lineIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 .reveal { opacity: 0; animation: lineIn 0.6s ease forwards; animation-play-state: paused; }
@@ -116,8 +116,8 @@ hr.rule { border: 0; height: 1px; background: var(--line); margin: 0; }
 .btn:hover { background: var(--fg); border-color: var(--fg); }
 .btn-outline { color: var(--gold); background: transparent; }
 .btn-outline:hover { color: var(--bg); background: var(--gold); }
-.theme-toggle { color: var(--dim); background: transparent; border: 1px solid var(--line); }
-.theme-toggle:hover { color: var(--gold); border-color: var(--gold); background: transparent !important; }
+.btn-ghost { color: var(--dim); background: transparent; border: 1px solid var(--line); }
+.btn-ghost:hover { color: var(--gold); border-color: var(--gold); background: transparent !important; }
 
 .hero { padding: 64px 0 48px; }
 .hero .cmdline { color: var(--dim); font-size: 14px; margin: 0 0 18px; }
@@ -175,4 +175,5 @@ footer .ok { color: var(--gold); }
   .termbar .row { gap: 12px; }
   .termbrand { gap: 12px; }
   .termtitle { display: none; }
+  .termnav .dl { display: none; }
 }

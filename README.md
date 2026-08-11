@@ -37,6 +37,12 @@ Page content is stored as segments (`string | { gold: string }`) rather than
 HTML strings, which keeps the highlighted terms out of `dangerouslySetInnerHTML`
 and `v-html`.
 
+`data.ts` exports `content: Record<Lang, Content>` — English, Portuguese and
+French copy behind one shape. The static build carries its English copy in the
+markup and keeps the other two in an `I18N` table in the page script, keyed by
+`data-i18n` attributes; the English strings are read back out of the DOM at load
+so they are never written twice.
+
 ## Switching between the three
 
 Each page has an `[html] [react] [vue]` switcher in the terminal bar. The links
@@ -77,5 +83,8 @@ local preview both call it, so they cannot disagree.
 - Reduced-motion is handled entirely in CSS.
 - Three themes — terminal, monokai, dracula — cycled from the terminal bar and
   persisted to `localStorage`.
+- Three languages — en, pt, fr — cycled from the terminal bar, persisted to
+  `localStorage`, and mirrored onto `<html lang>`. Switching replays the typing
+  animation. The resume PDF stays English-only.
 - TypeScript is pinned to 5.x by a root `overrides` block because `vue-tsc`
   cannot resolve TypeScript 7. Drop the override once it can.

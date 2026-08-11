@@ -1,29 +1,20 @@
-import {
-  EMAIL,
-  RESUME_URL,
-  about,
-  contact,
-  experience,
-  hero,
-  nav,
-  skills,
-  stats,
-} from './data';
+import { EMAIL, NAME, RESUME_URL, content, type Content } from './data';
 import { CURRENT, projects } from './projects';
 import { Cmdline, PER_CHAR_BODY, PER_CHAR_HEADER, Typed } from './Typed';
+import { useLang } from './useLang';
 import { useTheme } from './useTheme';
 
-function DownloadButtons() {
+function DownloadButtons({ ui }: { ui: Content['ui'] }) {
   return (
     <div className="row reveal go">
       <a href={RESUME_URL} download>
         <button type="button" className="btn">
-          download resume.pdf
+          {ui.downloadPdf}
         </button>
       </a>
       <a href={`mailto:${EMAIL}`}>
         <button type="button" className="btn btn-outline">
-          email me
+          {ui.emailMe}
         </button>
       </a>
     </div>
@@ -48,7 +39,7 @@ function ProjectSwitcher() {
   );
 }
 
-function Termbar() {
+function Termbar({ c, langLabel, cycleLang }: { c: Content; langLabel: string; cycleLang: () => void }) {
   const { label, cycle } = useTheme();
   return (
     <div className="termbar reveal go">
@@ -63,17 +54,20 @@ function Termbar() {
           <ProjectSwitcher />
         </div>
         <nav className="termnav">
-          {nav.map((n) => (
+          {c.nav.map((n) => (
             <a key={n.href} href={n.href}>
               {n.label}
             </a>
           ))}
-          <a href={RESUME_URL} download>
+          <a className="dl" href={RESUME_URL} download>
             <button type="button" className="btn">
-              download resume
+              {c.ui.download}
             </button>
           </a>
-          <button type="button" className="btn theme-toggle" onClick={cycle}>
+          <button type="button" className="btn btn-ghost" onClick={cycleLang}>
+            {langLabel}
+          </button>
+          <button type="button" className="btn btn-ghost" onClick={cycle}>
             {label}
           </button>
         </nav>
@@ -83,16 +77,19 @@ function Termbar() {
 }
 
 export default function App() {
+  const { lang, label: langLabel, cycle: cycleLang } = useLang();
+  const c = content[lang];
+
   return (
     <>
-      <Termbar />
-      <div className="wrap">
+      <Termbar c={c} langLabel={langLabel} cycleLang={cycleLang} />
+      <div className="wrap" key={lang}>
         <section className="hero">
           <Cmdline text="whoami" cursor />
-          <Typed as="h1" segs={[hero.name]} perChar={PER_CHAR_HEADER} />
-          <Typed as="p" className="role" segs={[hero.role]} perChar={PER_CHAR_HEADER} />
-          <Typed as="p" className="sub" segs={hero.sub} perChar={PER_CHAR_BODY} />
-          <DownloadButtons />
+          <Typed as="h1" segs={[NAME]} perChar={PER_CHAR_HEADER} />
+          <Typed as="p" className="role" segs={[c.hero.role]} perChar={PER_CHAR_HEADER} />
+          <Typed as="p" className="sub" segs={c.hero.sub} perChar={PER_CHAR_BODY} />
+          <DownloadButtons ui={c.ui} />
         </section>
 
         <hr className="rule" />
@@ -100,7 +97,7 @@ export default function App() {
         <section className="status" aria-label="Angelo Scholze, by the numbers">
           <Cmdline text="stat --career" />
           <div className="grid reveal go">
-            {stats.map((s) => (
+            {c.stats.map((s) => (
               <div key={s.k}>
                 <p className="k">{s.k}</p>
                 <p className={s.gilt ? 'v gilt' : 'v'}>{s.v}</p>
@@ -113,13 +110,13 @@ export default function App() {
 
         <section className="about-full" id="about">
           <Cmdline text="cat about.md" />
-          <Typed className="note" segs={about} perChar={PER_CHAR_BODY} />
+          <Typed className="note" segs={c.about} perChar={PER_CHAR_BODY} />
         </section>
 
         <section className="services" id="experience">
           <Cmdline text="ls -la experience/" />
           <div className="list">
-            {experience.map((e) => (
+            {c.experience.map((e) => (
               <div key={e.name} className="entry">
                 <div className="toprow reveal go">
                   <span className="name">{e.name}</span>
@@ -134,7 +131,7 @@ export default function App() {
         <section className="skillsec" id="skills">
           <Cmdline text="cat skills.txt" />
           <div className="chips reveal go">
-            {skills.map((s) => (
+            {c.skills.map((s) => (
               <span key={s} className="chip">
                 {s}
               </span>
@@ -146,22 +143,22 @@ export default function App() {
 
         <section className="close" id="contact">
           <Cmdline text="contact --me" />
-          <Typed as="h3" segs={['Get in touch']} perChar={PER_CHAR_HEADER} />
+          <Typed as="h3" segs={[c.ui.getInTouch]} perChar={PER_CHAR_HEADER} />
           <div className="contactgrid reveal go">
-            {contact.map((c) => (
-              <div key={c.k} className="row2">
-                <span className="k">{c.k}</span>
-                {c.href ? (
-                  <a href={c.href} {...(c.external ? { target: '_blank', rel: 'noopener' } : {})}>
-                    {c.label}
+            {c.contact.map((ct) => (
+              <div key={ct.k} className="row2">
+                <span className="k">{ct.k}</span>
+                {ct.href ? (
+                  <a href={ct.href} {...(ct.external ? { target: '_blank', rel: 'noopener' } : {})}>
+                    {ct.label}
                   </a>
                 ) : (
-                  <span>{c.label}</span>
+                  <span>{ct.label}</span>
                 )}
               </div>
             ))}
           </div>
-          <DownloadButtons />
+          <DownloadButtons ui={c.ui} />
         </section>
 
         <footer className="reveal go">
