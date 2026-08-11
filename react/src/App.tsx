@@ -53,7 +53,7 @@ function Termbar() {
   return (
     <div className="termbar reveal go">
       <div className="row">
-        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+        <div className="termbrand">
           <span className="dots">
             <span />
             <span />

@@ -99,6 +99,7 @@ hr.rule { border: 0; height: 1px; background: var(--line); margin: 0; }
 
 .termbar { border-bottom: 1px solid var(--line); background: var(--panel); position: sticky; top: 0; z-index: 5; }
 .termbar .row { display: flex; align-items: center; justify-content: space-between; padding: 14px var(--edge, clamp(16px,4vw,40px)); gap: 24px; flex-wrap: wrap; }
+.termbrand { display: flex; align-items: center; gap: 16px; min-width: 0; flex-wrap: wrap; }
 .dots { display: flex; gap: 7px; }
 .dots span { width: 11px; height: 11px; border-radius: 50%; border: 1px solid var(--line); }
 .dots span:nth-child(3) { background: var(--gold); border-color: var(--gold); }
@@ -171,4 +172,7 @@ footer .ok { color: var(--gold); }
   .status .grid { grid-template-columns: repeat(2, 1fr); }
   .termnav a:not(.brand) { display: none; }
   .contactgrid { grid-template-columns: 1fr; }
+  .termbar .row { gap: 12px; }
+  .termbrand { gap: 12px; }
+  .termtitle { display: none; }
 }

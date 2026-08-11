@@ -11,7 +11,7 @@ const mailto = `mailto:${EMAIL}`;
 <template>
   <div class="reveal go termbar">
     <div class="row">
-      <div style="display: flex; align-items: center; gap: 16px">
+      <div class="termbrand">
         <span class="dots"><span /><span /><span /></span>
         <span class="termtitle">angelo@scholze:~/resume$</span>
         <span class="projsw">
