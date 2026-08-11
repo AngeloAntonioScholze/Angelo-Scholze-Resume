@@ -32,7 +32,7 @@ export const stats = [
   { k: 'years_experience', v: '7', gilt: true },
   { k: 'companies', v: '5', gilt: false },
   { k: 'core_stack', v: 'Flutter', gilt: false },
-  { k: 'languages', v: 'EN / FR', gilt: false },
+  { k: 'languages', v: 'EN / PT / FR', gilt: false },
 ];
 
 export const about: Seg[] = [
