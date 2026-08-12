@@ -1,5 +1,6 @@
-import { EMAIL, NAME, RESUME_URL, content, type Content } from './data';
-import { CURRENT, projects } from './projects';
+import { EMAIL, NAME, RESUME_URL, content, type Content } from '@resume/shared/data';
+import { projects } from '@resume/shared/projects';
+import { CURRENT } from './projects';
 import { Cmdline, PER_CHAR_BODY, PER_CHAR_HEADER, Typed } from './Typed';
 import { useLang } from './useLang';
 import { useTheme } from './useTheme';

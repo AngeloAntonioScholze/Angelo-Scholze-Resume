@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { EMAIL, NAME, RESUME_URL, content } from './data';
-import { CURRENT, projects } from './projects';
+import { EMAIL, NAME, RESUME_URL, content } from '@resume/shared/data';
+import { projects } from '@resume/shared/projects';
+import { CURRENT } from './projects';
 import { Cmdline, PER_CHAR_BODY, PER_CHAR_HEADER, Typed } from './Typed';
 import { useLang } from './useLang';
 import { useTheme } from './useTheme';

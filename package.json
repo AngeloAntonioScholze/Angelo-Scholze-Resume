@@ -2,6 +2,7 @@
   "name": "resume-landing-page",
   "private": true,
   "workspaces": [
+    "shared",
     "react",
     "vue"
   ],
@@ -9,9 +10,13 @@
     "typescript": "^5.9.3"
   },
   "scripts": {
-    "build": "npm run build --workspaces",
+    "sync-assets": "node scripts/sync-assets.mjs",
+    "prebuild": "npm run sync-assets",
+    "build": "npm run build --workspaces --if-present",
     "assemble": "node scripts/assemble.mjs",
+    "predev:react": "npm run sync-assets",
     "dev:react": "npm run dev -w react",
+    "predev:vue": "npm run sync-assets",
     "dev:vue": "npm run dev -w vue"
   },
   "devDependencies": {

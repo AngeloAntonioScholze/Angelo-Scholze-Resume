@@ -1,5 +1,5 @@
 import { Fragment, createElement, type CSSProperties, type ReactNode } from 'react';
-import type { Seg } from './data';
+import type { Seg } from '@resume/shared/data';
 
 export const PER_CHAR = 12;
 export const PER_CHAR_HEADER = 22;

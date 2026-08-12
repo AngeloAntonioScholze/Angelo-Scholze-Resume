@@ -1,0 +1,11 @@
+{
+  "name": "@resume/shared",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./data": "./data.ts",
+    "./projects": "./projects.ts",
+    "./toggles": "./toggles.ts",
+    "./styles.css": "./styles.css"
+  }
+}

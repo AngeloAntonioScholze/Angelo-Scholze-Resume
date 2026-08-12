@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@resume/shared": "*",
     "vue": "^3.5.41"
   },
   "devDependencies": {

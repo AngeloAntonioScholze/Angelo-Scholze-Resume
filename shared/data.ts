@@ -1,5 +1,6 @@
+import type { Lang } from './toggles';
+
 export type Seg = string | { gold: string };
-export type Lang = 'en' | 'pt' | 'fr';
 
 export const RESUME_URL = 'assets/angelo-scholze-resume.pdf';
 export const EMAIL = 'antonioscholze@gmail.com';

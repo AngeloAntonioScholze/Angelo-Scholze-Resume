@@ -8,10 +8,12 @@ implementations you can diff against each other.
 
 ```
 index.html      static build — no tooling, open it directly
+shared/         @resume/shared — content, CSS and state shared by react/ + vue/
 react/          React 19 + Vite
 vue/            Vue 3 + Vite
-assets/         resume PDF, favicons, webmanifest
+assets/         resume PDF, favicons, webmanifest — the only committed copy
 scripts/        assemble.mjs — builds the deployed site/ layout
+                sync-assets.mjs — copies assets/ into each build's publicDir
 ```
 
 `react/` and `vue/` are npm workspaces of the repo root.
@@ -19,8 +21,8 @@ scripts/        assemble.mjs — builds the deployed site/ layout
 ## Running
 
 ```bash
-npm install       # installs both workspaces
-npm run build     # builds both
+npm install       # installs all three workspaces, links @resume/shared
+npm run build     # syncs assets, then builds both
 npm run dev:react
 npm run dev:vue
 ```
@@ -29,9 +31,24 @@ The static version needs nothing — open `index.html`.
 
 ## How the three stay in sync
 
-`styles.css` and `data.ts` are kept byte-identical between `react/src/` and
-`vue/src/`, so the design and the copy have a single source of truth. Only
-`projects.ts` differs, marking which build is active in the switcher.
+Everything framework-agnostic lives in `shared/`, an npm workspace the two apps
+depend on as `@resume/shared`:
+
+```
+shared/data.ts      copy for all three languages
+shared/styles.css   the whole design
+shared/toggles.ts   theme + language state machine (labels, guards, storage)
+shared/projects.ts  the [html] [react] [vue] switcher targets
+```
+
+npm links it into `node_modules/@resume/shared`, so both builds import the same
+files — no copying, no drift. What stays per-app is only what genuinely differs:
+`Typed` (React elements vs Vue vnodes), `useTheme`/`useLang` (hooks vs refs, ~12
+lines each of glue over `shared/toggles.ts`), and `projects.ts`, now a single
+line naming which build is active.
+
+The static `index.html` shares nothing — that is the point of it. It carries its
+own copy of the CSS and content inline, so it stays a single openable file.
 
 Page content is stored as segments (`string | { gold: string }`) rather than
 HTML strings, which keeps the highlighted terms out of `dangerouslySetInnerHTML`
