@@ -103,5 +103,7 @@ local preview both call it, so they cannot disagree.
 - Three languages — en, pt, fr — cycled from the terminal bar, persisted to
   `localStorage`, and mirrored onto `<html lang>`. Switching replays the typing
   animation. The resume PDF stays English-only.
+- The site's experience list is not a mirror of the PDF. IBF (Aug–Nov 2021)
+  is kept on the site on purpose even though the current CV omits it.
 - TypeScript is pinned to 5.x by a root `overrides` block because `vue-tsc`
   cannot resolve TypeScript 7. Drop the override once it can.
