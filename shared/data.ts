@@ -29,8 +29,9 @@ const skillList = (yr: string) => [
   `GetX — 3${yr}`,
   `Firebase — 3${yr}`,
   `JavaScript — 2${yr}`,
-  `MongoDB — 2${yr}`,
+  `MongoDB — 3${yr}`,
   `Kotlin — 1${yr}`,
+  `Python — 1${yr}`,
   `TDD — 1${yr}`,
   'React',
   'Next.js',
@@ -80,7 +81,7 @@ const en: Content = {
   },
   stats: [
     { k: 'years_experience', v: '7', gilt: true },
-    { k: 'companies', v: '5', gilt: false },
+    { k: 'companies', v: '6', gilt: false },
     { k: 'core_stack', v: 'Flutter', gilt: false },
     { k: 'languages', v: 'EN / PT / FR', gilt: false },
   ],
@@ -117,8 +118,17 @@ const en: Content = {
   ],
   experience: [
     {
-      name: 'leading-edge-ag-solutions/',
+      name: 'cappta/',
       dates: 'Aug 2025 — current',
+      body: [
+        'Senior Software Developer, Full Stack. Fintech backend services built in ',
+        { gold: 'Python' },
+        '; ledger integration; developed a white-label digital account app for banking services.',
+      ],
+    },
+    {
+      name: 'leading-edge-ag-solutions/',
+      dates: 'Aug 2025 — May 2026',
       body: [
         'Senior Software Developer, ',
         { gold: 'Flutter' },
@@ -233,7 +243,7 @@ const pt: Content = {
   },
   stats: [
     { k: 'anos_experiencia', v: '7', gilt: true },
-    { k: 'empresas', v: '5', gilt: false },
+    { k: 'empresas', v: '6', gilt: false },
     { k: 'stack_principal', v: 'Flutter', gilt: false },
     { k: 'idiomas', v: 'EN / PT / FR', gilt: false },
   ],
@@ -270,8 +280,17 @@ const pt: Content = {
   ],
   experience: [
     {
-      name: 'leading-edge-ag-solutions/',
+      name: 'cappta/',
       dates: 'Ago 2025 — atual',
+      body: [
+        'Desenvolvedor de Software Sênior, Full Stack. Serviços backend de fintech desenvolvidos em ',
+        { gold: 'Python' },
+        '; integração com ledger; desenvolvimento de app white-label de conta digital para serviços bancários.',
+      ],
+    },
+    {
+      name: 'leading-edge-ag-solutions/',
+      dates: 'Ago 2025 — Mai 2026',
       body: [
         'Desenvolvedor de Software Sênior, ',
         { gold: 'Flutter' },
@@ -391,7 +410,7 @@ const fr: Content = {
   },
   stats: [
     { k: 'annees_experience', v: '7', gilt: true },
-    { k: 'entreprises', v: '5', gilt: false },
+    { k: 'entreprises', v: '6', gilt: false },
     { k: 'stack_principale', v: 'Flutter', gilt: false },
     { k: 'langues', v: 'EN / PT / FR', gilt: false },
   ],
@@ -428,8 +447,17 @@ const fr: Content = {
   ],
   experience: [
     {
-      name: 'leading-edge-ag-solutions/',
+      name: 'cappta/',
       dates: 'Août 2025 — actuel',
+      body: [
+        'Développeur logiciel senior, Full Stack. Services backend fintech développés en ',
+        { gold: 'Python' },
+        " ; intégration de ledger ; développement d'une app de compte digital en marque blanche pour services bancaires.",
+      ],
+    },
+    {
+      name: 'leading-edge-ag-solutions/',
+      dates: 'Août 2025 — Mai 2026',
       body: [
         'Développeur logiciel senior, ',
         { gold: 'Flutter' },
