@@ -119,7 +119,7 @@ const en: Content = {
   experience: [
     {
       name: 'cappta/',
-      dates: 'Aug 2025 — current',
+      dates: 'May 2026 — current',
       body: [
         'Senior Software Developer, Full Stack. Fintech backend services built in ',
         { gold: 'Python' },
@@ -281,7 +281,7 @@ const pt: Content = {
   experience: [
     {
       name: 'cappta/',
-      dates: 'Ago 2025 — atual',
+      dates: 'Mai 2026 — atual',
       body: [
         'Desenvolvedor de Software Sênior, Full Stack. Serviços backend de fintech desenvolvidos em ',
         { gold: 'Python' },
@@ -448,7 +448,7 @@ const fr: Content = {
   experience: [
     {
       name: 'cappta/',
-      dates: 'Août 2025 — actuel',
+      dates: 'Mai 2026 — actuel',
       body: [
         'Développeur logiciel senior, Full Stack. Services backend fintech développés en ',
         { gold: 'Python' },
