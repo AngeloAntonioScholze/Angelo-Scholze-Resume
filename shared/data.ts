@@ -67,7 +67,7 @@ const en: Content = {
     role: 'Full Stack Senior Flutter Developer',
     sub: [
       'I am a Senior-Level Software Developer with ',
-      { gold: 'seven years' },
+      { gold: 'eight years' },
       ' of experience, specializing primarily in mobile development using the ',
       { gold: 'Flutter' },
       ' framework, paired with full-stack work in ',
@@ -80,13 +80,13 @@ const en: Content = {
     ],
   },
   stats: [
-    { k: 'years_experience', v: '7', gilt: true },
+    { k: 'years_experience', v: '8', gilt: true },
     { k: 'companies', v: '6', gilt: false },
     { k: 'core_stack', v: 'Flutter', gilt: false },
     { k: 'languages', v: 'EN / PT / FR', gilt: false },
   ],
   about: [
-    'Seven years building mobile-first products in ',
+    'Eight years building mobile-first products in ',
     { gold: 'Flutter' },
     ' — ',
     { gold: 'BloC' },
@@ -229,7 +229,7 @@ const pt: Content = {
     role: 'Desenvolvedor Flutter Sênior Full Stack',
     sub: [
       'Sou Desenvolvedor de Software Sênior com ',
-      { gold: 'sete anos' },
+      { gold: 'oito anos' },
       ' de experiência, especializado principalmente em desenvolvimento mobile com o framework ',
       { gold: 'Flutter' },
       ', somado a trabalho full-stack em ',
@@ -242,13 +242,13 @@ const pt: Content = {
     ],
   },
   stats: [
-    { k: 'anos_experiencia', v: '7', gilt: true },
+    { k: 'anos_experiencia', v: '8', gilt: true },
     { k: 'empresas', v: '6', gilt: false },
     { k: 'stack_principal', v: 'Flutter', gilt: false },
     { k: 'idiomas', v: 'EN / PT / FR', gilt: false },
   ],
   about: [
-    'Sete anos construindo produtos mobile-first em ',
+    'Oito anos construindo produtos mobile-first em ',
     { gold: 'Flutter' },
     ' — ',
     { gold: 'BloC' },
@@ -396,7 +396,7 @@ const fr: Content = {
     role: 'Développeur Flutter Senior Full Stack',
     sub: [
       'Je suis développeur logiciel senior avec ',
-      { gold: 'sept ans' },
+      { gold: 'huit ans' },
       " d'expérience, spécialisé principalement en développement mobile avec le framework ",
       { gold: 'Flutter' },
       ', complété par du travail full-stack en ',
@@ -409,13 +409,13 @@ const fr: Content = {
     ],
   },
   stats: [
-    { k: 'annees_experience', v: '7', gilt: true },
+    { k: 'annees_experience', v: '8', gilt: true },
     { k: 'entreprises', v: '6', gilt: false },
     { k: 'stack_principale', v: 'Flutter', gilt: false },
     { k: 'langues', v: 'EN / PT / FR', gilt: false },
   ],
   about: [
-    'Sept ans à construire des produits mobile-first en ',
+    'Huit ans à construire des produits mobile-first en ',
     { gold: 'Flutter' },
     ' — ',
     { gold: 'BloC' },
