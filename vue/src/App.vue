@@ -92,6 +92,19 @@ const mailto = `mailto:${EMAIL}`;
       </div>
     </section>
 
+    <section id="projects" class="services sites">
+      <Cmdline text="ls -la ~/projects/" />
+      <div class="list">
+        <div v-for="s in c.sites" :key="s.name" class="entry">
+          <div class="reveal go toprow">
+            <span class="name">{{ s.name }}</span>
+            <span class="dates">-&gt; <a :href="s.href" target="_blank" rel="noopener">{{ s.label }}</a></span>
+          </div>
+          <Typed :segs="s.body" :per-char="PER_CHAR_BODY" />
+        </div>
+      </div>
+    </section>
+
     <hr class="rule" />
 
     <section id="contact" class="close">

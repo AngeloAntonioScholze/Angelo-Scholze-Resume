@@ -46,6 +46,7 @@ Deploy: a push to `main` runs `.github/workflows/deploy.yml`, which builds, asse
 - **Themes**: terminal / monokai / dracula, persisted in `localStorage`.
 - **Languages**: en / pt / fr, persisted, mirrored to `<html lang>`. Switching replays the typing animation.
 - Animations run once at load. Reduced-motion is handled in CSS.
+- **Projects section** (`./projects`, `ls -la ~/projects/`): symlink-style entries linking live side projects, from `sites` in `shared/data.ts` (static copy mirrors it). First entry: hexcrawl_web on GitHub Pages.
 - Recent content changes: experience bumped to eight years (`addcd89`), FR Cappta copy fix (`45ddd74`).
 
 ## Decisions

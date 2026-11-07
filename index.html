@@ -103,7 +103,7 @@ body {
 a { color: var(--gold); text-decoration: none; }
 a:hover { color: var(--fg); text-decoration: underline; text-underline-offset: 3px; }
 .wrap { max-width: 980px; margin: 0 auto; padding: 0 var(--edge, clamp(16px,4vw,40px)); }
-#about, #experience, #skills, #contact { scroll-margin-top: 64px; }
+#about, #experience, #skills, #projects, #contact { scroll-margin-top: 64px; }
 .cursor { display: inline-block; width: 0.55em; height: 1em; background: var(--gold); vertical-align: -0.15em; animation: blink 1s step-end infinite; }
 @keyframes blink { 50% { opacity: 0; } }
 .dim { color: var(--dim); }
@@ -165,6 +165,8 @@ hr.rule { border: 0; height: 1px; background: var(--line); margin: 0; }
 .entry .name::before { content: "drwxr-xr-x  "; color: var(--dim); font-weight: 400; font-size: 13px; }
 .entry .dates { color: var(--dim); font-size: 13px; white-space: nowrap; }
 .entry p { margin: 8px 0 0; color: var(--fg); font-size: 14px; max-width: 68ch; }
+.sites .entry .name::before { content: "lrwxrwxrwx  "; }
+.sites .entry .dates { white-space: normal; overflow-wrap: anywhere; }
 
 .skillsec { padding: 40px 0; }
 .skillsec .cmdline { color: var(--dim); font-size: 14px; margin: 0 0 20px; }
@@ -210,6 +212,7 @@ footer .ok { color: var(--gold); }
       <a href="#about" data-i18n="nav.about">./about</a>
       <a href="#experience" data-i18n="nav.experience">./experience</a>
       <a href="#skills" data-i18n="nav.skills">./skills</a>
+      <a href="#projects" data-i18n="nav.projects">./projects</a>
       <a href="#contact" data-i18n="nav.contact">./contact</a>
       <a class="dl" href="assets/angelo-scholze-resume.pdf" download><button type="button" class="btn" data-i18n="ui.download">download resume</button></a>
       <button type="button" class="btn btn-ghost" id="langToggle">lang --pt</button>
@@ -302,6 +305,16 @@ footer .ok { color: var(--gold); }
       <span class="chip">Next.js</span>
       <span class="chip">Node.js</span>
       <span class="chip">PostgreSQL</span>
+    </div>
+  </section>
+
+  <section class="services sites" id="projects">
+    <p class="cmdline type"><span class="prompt">$</span>ls -la ~/projects/</p>
+    <div class="list">
+      <div class="entry">
+        <div class="toprow reveal"><span class="name">hexcrawl_web</span><span class="dates">-&gt; <a href="https://angeloantonioscholze.github.io/hexcrawl_web/" target="_blank" rel="noopener">angeloantonioscholze.github.io/hexcrawl_web</a></span></div>
+        <p class="type type-body" data-i18n="site0.body">3D hexcrawl sandbox for tabletop RPGs in the browser: hex terrain, party routes, fog of war and a day/night cycle. Built with <span class="gold">Vue 3</span> and <span class="gold">Babylon.js</span>; maps persisted via <span class="gold">SQLite WASM</span> on OPFS.</p>
+      </div>
     </div>
   </section>
 
@@ -399,6 +412,7 @@ footer .ok { color: var(--gold); }
       'nav.about': './sobre',
       'nav.experience': './experiencia',
       'nav.skills': './habilidades',
+      'nav.projects': './projetos',
       'nav.contact': './contato',
       'ui.download': 'baixar curriculo',
       'ui.downloadPdf': 'baixar curriculo.pdf',
@@ -424,12 +438,14 @@ footer .ok { color: var(--gold); }
       'exp5.dates': 'Nov 2021 — Fev 2023',
       'exp5.body': 'Desenvolvedor de Software, <span class="gold">Flutter</span>. Migração de Flutter 1 para Flutter 3, nova arquitetura de estado <span class="gold">BloC</span>/<span class="gold">GetX</span>, integração de <span class="gold">REST APIs</span> e <span class="gold">MongoDB</span> sob Scrum.',
       'skills': SKILLS_A,
+      'site0.body': 'Sandbox 3D de hexcrawl para RPG de mesa no navegador: terreno em hexágonos, rotas do grupo, névoa de guerra e ciclo dia/noite. Construído com <span class="gold">Vue 3</span> e <span class="gold">Babylon.js</span>; mapas persistidos via <span class="gold">SQLite WASM</span> no OPFS.',
       'contact.phone': 'telefone',
     },
     fr: {
       'nav.about': './apropos',
       'nav.experience': './experience',
       'nav.skills': './competences',
+      'nav.projects': './projets',
       'nav.contact': './contact',
       'ui.download': 'telecharger cv',
       'ui.downloadPdf': 'telecharger cv.pdf',
@@ -455,6 +471,7 @@ footer .ok { color: var(--gold); }
       'exp5.dates': 'Nov 2021 — Févr 2023',
       'exp5.body': 'Développeur logiciel, <span class="gold">Flutter</span>. Migration de Flutter 1 vers Flutter 3, nouvelle architecture d\'état <span class="gold">BloC</span>/<span class="gold">GetX</span>, intégration de <span class="gold">REST APIs</span> et <span class="gold">MongoDB</span> en Scrum.',
       'skills': SKILLS_A,
+      'site0.body': 'Bac à sable 3D de hexcrawl pour JDR sur table dans le navigateur : terrain en hexagones, itinéraires du groupe, brouillard de guerre et cycle jour/nuit. Construit avec <span class="gold">Vue 3</span> et <span class="gold">Babylon.js</span> ; cartes persistées via <span class="gold">SQLite WASM</span> sur OPFS.',
       'contact.phone': 'telephone',
     },
   };

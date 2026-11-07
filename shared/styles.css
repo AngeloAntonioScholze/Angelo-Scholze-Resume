@@ -89,7 +89,7 @@ body {
 a { color: var(--gold); text-decoration: none; }
 a:hover { color: var(--fg); text-decoration: underline; text-underline-offset: 3px; }
 .wrap { max-width: 980px; margin: 0 auto; padding: 0 var(--edge, clamp(16px,4vw,40px)); }
-#about, #experience, #skills, #contact { scroll-margin-top: 64px; }
+#about, #experience, #skills, #projects, #contact { scroll-margin-top: 64px; }
 .cursor { display: inline-block; width: 0.55em; height: 1em; background: var(--gold); vertical-align: -0.15em; animation: blink 1s step-end infinite; }
 @keyframes blink { 50% { opacity: 0; } }
 .dim { color: var(--dim); }
@@ -151,6 +151,8 @@ hr.rule { border: 0; height: 1px; background: var(--line); margin: 0; }
 .entry .name::before { content: "drwxr-xr-x  "; color: var(--dim); font-weight: 400; font-size: 13px; }
 .entry .dates { color: var(--dim); font-size: 13px; white-space: nowrap; }
 .entry p { margin: 8px 0 0; color: var(--fg); font-size: 14px; max-width: 68ch; }
+.sites .entry .name::before { content: "lrwxrwxrwx  "; }
+.sites .entry .dates { white-space: normal; overflow-wrap: anywhere; }
 
 .skillsec { padding: 40px 0; }
 .skillsec .cmdline { color: var(--dim); font-size: 14px; margin: 0 0 20px; }

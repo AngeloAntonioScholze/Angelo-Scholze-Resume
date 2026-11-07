@@ -140,6 +140,26 @@ export default function App() {
           </div>
         </section>
 
+        <section className="services sites" id="projects">
+          <Cmdline text="ls -la ~/projects/" />
+          <div className="list">
+            {c.sites.map((s) => (
+              <div key={s.name} className="entry">
+                <div className="toprow reveal go">
+                  <span className="name">{s.name}</span>
+                  <span className="dates">
+                    -&gt;{' '}
+                    <a href={s.href} target="_blank" rel="noopener">
+                      {s.label}
+                    </a>
+                  </span>
+                </div>
+                <Typed segs={s.body} perChar={PER_CHAR_BODY} />
+              </div>
+            ))}
+          </div>
+        </section>
+
         <hr className="rule" />
 
         <section className="close" id="contact">

@@ -13,8 +13,15 @@ export type Content = {
   about: Seg[];
   experience: { name: string; dates: string; body: Seg[] }[];
   skills: string[];
+  sites: { name: string; href: string; label: string; body: Seg[] }[];
   contact: { k: string; label: string; href?: string; external?: boolean }[];
   ui: { download: string; downloadPdf: string; emailMe: string; getInTouch: string };
+};
+
+const HEXCRAWL = {
+  name: 'hexcrawl_web',
+  href: 'https://angeloantonioscholze.github.io/hexcrawl_web/',
+  label: 'angeloantonioscholze.github.io/hexcrawl_web',
 };
 
 const skillList = (yr: string) => [
@@ -61,6 +68,7 @@ const en: Content = {
     { href: '#about', label: './about' },
     { href: '#experience', label: './experience' },
     { href: '#skills', label: './skills' },
+    { href: '#projects', label: './projects' },
     { href: '#contact', label: './contact' },
   ],
   hero: {
@@ -209,6 +217,20 @@ const en: Content = {
     },
   ],
   skills: skillList('y'),
+  sites: [
+    {
+      ...HEXCRAWL,
+      body: [
+        '3D hexcrawl sandbox for tabletop RPGs in the browser: hex terrain, party routes, fog of war and a day/night cycle. Built with ',
+        { gold: 'Vue 3' },
+        ' and ',
+        { gold: 'Babylon.js' },
+        '; maps persisted via ',
+        { gold: 'SQLite WASM' },
+        ' on OPFS.',
+      ],
+    },
+  ],
   contact: contactRows({ email: 'email', phone: 'phone', linkedin: 'linkedin', github: 'github' }),
   ui: {
     download: 'download resume',
@@ -223,6 +245,7 @@ const pt: Content = {
     { href: '#about', label: './sobre' },
     { href: '#experience', label: './experiencia' },
     { href: '#skills', label: './habilidades' },
+    { href: '#projects', label: './projetos' },
     { href: '#contact', label: './contato' },
   ],
   hero: {
@@ -371,6 +394,20 @@ const pt: Content = {
     },
   ],
   skills: skillList('a'),
+  sites: [
+    {
+      ...HEXCRAWL,
+      body: [
+        'Sandbox 3D de hexcrawl para RPG de mesa no navegador: terreno em hexágonos, rotas do grupo, névoa de guerra e ciclo dia/noite. Construído com ',
+        { gold: 'Vue 3' },
+        ' e ',
+        { gold: 'Babylon.js' },
+        '; mapas persistidos via ',
+        { gold: 'SQLite WASM' },
+        ' no OPFS.',
+      ],
+    },
+  ],
   contact: contactRows({
     email: 'email',
     phone: 'telefone',
@@ -390,6 +427,7 @@ const fr: Content = {
     { href: '#about', label: './apropos' },
     { href: '#experience', label: './experience' },
     { href: '#skills', label: './competences' },
+    { href: '#projects', label: './projets' },
     { href: '#contact', label: './contact' },
   ],
   hero: {
@@ -538,6 +576,20 @@ const fr: Content = {
     },
   ],
   skills: skillList('a'),
+  sites: [
+    {
+      ...HEXCRAWL,
+      body: [
+        'Bac à sable 3D de hexcrawl pour JDR sur table dans le navigateur : terrain en hexagones, itinéraires du groupe, brouillard de guerre et cycle jour/nuit. Construit avec ',
+        { gold: 'Vue 3' },
+        ' et ',
+        { gold: 'Babylon.js' },
+        ' ; cartes persistées via ',
+        { gold: 'SQLite WASM' },
+        ' sur OPFS.',
+      ],
+    },
+  ],
   contact: contactRows({
     email: 'email',
     phone: 'telephone',
