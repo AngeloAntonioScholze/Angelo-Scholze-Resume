@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@resume/shared": "*",
+    "posthog-js": "^1.450.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"
   },

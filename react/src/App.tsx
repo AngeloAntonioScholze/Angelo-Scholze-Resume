@@ -4,16 +4,22 @@ import { CURRENT } from './projects';
 import { Cmdline, PER_CHAR_BODY, PER_CHAR_HEADER, Typed } from './Typed';
 import { useLang } from './useLang';
 import { useTheme } from './useTheme';
+import posthog, { posthogLogger } from './posthog';
+
+function trackResumeDownload() {
+  posthog.capture('resume_downloaded');
+  posthogLogger.info('resume download requested', { interaction: 'resume_download' });
+}
 
 function DownloadButtons({ ui }: { ui: Content['ui'] }) {
   return (
     <div className="row reveal go">
-      <a href={RESUME_URL} download>
+      <a href={RESUME_URL} download onClick={trackResumeDownload}>
         <button type="button" className="btn">
           {ui.downloadPdf}
         </button>
       </a>
-      <a href={`mailto:${EMAIL}`}>
+      <a href={`mailto:${EMAIL}`} onClick={() => posthog.capture('contact_email_initiated')}>
         <button type="button" className="btn btn-outline">
           {ui.emailMe}
         </button>
@@ -60,7 +66,12 @@ function Termbar({ c, langLabel, cycleLang }: { c: Content; langLabel: string; c
               {n.label}
             </a>
           ))}
-          <a className="dl" href={RESUME_URL} download>
+          <a
+            className="dl"
+            href={RESUME_URL}
+            download
+            onClick={trackResumeDownload}
+          >
             <button type="button" className="btn">
               {c.ui.download}
             </button>
@@ -149,7 +160,15 @@ export default function App() {
                   <span className="name">{s.name}</span>
                   <span className="dates">
                     -&gt;{' '}
-                    <a href={s.href} target="_blank" rel="noopener">
+                    <a
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener"
+                      onClick={() => {
+                        posthog.capture('portfolio_project_opened');
+                        posthogLogger.info('portfolio project opened', { interaction: 'portfolio_project' });
+                      }}
+                    >
                       {s.label}
                     </a>
                   </span>
@@ -170,7 +189,11 @@ export default function App() {
               <div key={ct.k} className="row2">
                 <span className="k">{ct.k}</span>
                 {ct.href ? (
-                  <a href={ct.href} {...(ct.external ? { target: '_blank', rel: 'noopener' } : {})}>
+                  <a
+                    href={ct.href}
+                    onClick={() => posthog.capture('contact_link_opened')}
+                    {...(ct.external ? { target: '_blank', rel: 'noopener' } : {})}
+                  >
                     {ct.label}
                   </a>
                 ) : (
