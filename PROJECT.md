@@ -19,6 +19,8 @@ Run from `resume_landing_page/`.
 2. **assemble**: `npm run assemble`
 3. **static**: open `index.html` and check the copy matches `shared/data.ts`
 
+CI (`.github/workflows/ci.yml`) runs gates 1–2 on every pull request to `main`. Gate 3 stays manual.
+
 ## Architecture
 ```
 index.html   static build; self-contained CSS + content, no tooling
@@ -28,7 +30,7 @@ vue/         Vue 3 + Vite: same glue as refs
 assets/      PDF, favicons, webmanifest — the only committed copy
 scripts/     assemble.mjs (deployed layout), sync-assets.mjs
 ```
-Deploy: a push to `main` runs `.github/workflows/deploy.yml`, which builds, assembles and publishes `site/` to Pages. `dist/` and `site/` are gitignored.
+Workflows: a push to `main` runs `.github/workflows/deploy.yml`, which builds, assembles and publishes `site/` to Pages. Every pull request to `main` runs `.github/workflows/ci.yml` (build + assemble, no deploy). `dist/` and `site/` are gitignored.
 
 ## Rules
 - **Content or design changes go to all three.** Edit `shared/` (React + Vue pick it up) **and** `index.html`: its inline CSS and its `I18N` table keyed by `data-i18n`. The English text lives in the DOM.
@@ -47,8 +49,10 @@ Deploy: a push to `main` runs `.github/workflows/deploy.yml`, which builds, asse
 - **Languages**: en / pt / fr, persisted, mirrored to `<html lang>`. Switching replays the typing animation.
 - Animations run once at load. Reduced-motion is handled in CSS.
 - **Projects section** (`./projects`, `ls -la ~/projects/`): symlink-style entries linking live side projects, from `sites` in `shared/data.ts` (static copy mirrors it). First entry: hexcrawl_web on GitHub Pages.
+- 2026-11-18 **PR CI**: `ci.yml` runs `npm run build` and `npm run assemble` on every pull request to `main` (node 22, same lockfile workaround as `deploy.yml`). No deploy; the static gate stays manual.
 - Recent content changes: experience bumped to eight years (`addcd89`), FR Cappta copy fix (`45ddd74`).
 
 ## Decisions
 - `shared/` is an npm workspace rather than copied files, so the two framework builds can't drift.
+- 2026-11-18: CI tests freshly resolved dependencies, not the lockfile (same trade-off as deploy). Merges happen via a PR per bead, so CI is the pre-merge check.
 - 2026-11-06: Moved agent config to the projects root. This file replaces the per-repo CLAUDE.md/AGENTS.md.
