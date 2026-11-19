@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      # The committed lockfile is authored on Windows, and npm records only the
+      # host platform's optional native binaries. Both `npm ci` and `npm install`
+      # then honour it and leave a linux runner with no @rolldown/binding, so
+      # vite build dies loading the native addon. Resolve fresh for this platform.
+      - run: rm -f package-lock.json && npm install --no-audit --no-fund
+
+      - name: build
+        run: npm run build
+
+      - name: assemble
+        run: npm run assemble
