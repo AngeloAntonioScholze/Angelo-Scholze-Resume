@@ -1,6 +1,6 @@
 # resume_landing_page
 
-Project definition and rules for agents. Features, decisions and ideas live in the root vault: `vault/resume_landing_page/_index.md` (`/feature-doc`). Tasks live in the root beads DB under label `repo:resume_landing_page`.
+Project definition and rules for agents. Features, decisions and ideas live in the root vault: `vault/resume_landing_page/Resume Landing Page.md` (`/feature-doc`). Tasks live in the root beads DB under label `repo:resume_landing_page`.
 
 ## Purpose
 Terminal-themed resume landing page, built three times from the same design and content: a static `index.html`, React 19 and Vue 3. Deployed to GitHub Pages.
