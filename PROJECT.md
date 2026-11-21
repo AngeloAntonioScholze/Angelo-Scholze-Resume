@@ -1,6 +1,6 @@
 # resume_landing_page
 
-Living project doc for agents and feature lookups. Update `## Features` and `## Decisions` in the same commit as the feature (`/feature-doc`). Tasks live in the root beads DB under label `repo:resume_landing_page`.
+Project definition and rules for agents. Features, decisions and ideas live in the root vault: `vault/resume_landing_page/_index.md` (`/feature-doc`). Tasks live in the root beads DB under label `repo:resume_landing_page`.
 
 ## Purpose
 Terminal-themed resume landing page, built three times from the same design and content: a static `index.html`, React 19 and Vue 3. Deployed to GitHub Pages.
@@ -42,17 +42,3 @@ Workflows: a push to `main` runs `.github/workflows/deploy.yml`, which builds, a
 - `shared/data.ts`
 - `shared/styles.css`
 - `index.html`
-
-## Features
-- **Three implementations** with an `[html] [react] [vue]` switcher in the terminal bar, using relative links.
-- **Themes**: terminal / monokai / dracula, persisted in `localStorage`.
-- **Languages**: en / pt / fr, persisted, mirrored to `<html lang>`. Switching replays the typing animation.
-- Animations run once at load. Reduced-motion is handled in CSS.
-- **Projects section** (`./projects`, `ls -la ~/projects/`): symlink-style entries linking live side projects, from `sites` in `shared/data.ts` (static copy mirrors it). First entry: hexcrawl_web on GitHub Pages.
-- 2026-11-18 **PR CI**: `ci.yml` runs `npm run build` and `npm run assemble` on every pull request to `main` (node 22, same lockfile workaround as `deploy.yml`). No deploy; the static gate stays manual.
-- Recent content changes: experience bumped to eight years (`addcd89`), FR Cappta copy fix (`45ddd74`).
-
-## Decisions
-- `shared/` is an npm workspace rather than copied files, so the two framework builds can't drift.
-- 2026-11-18: CI tests freshly resolved dependencies, not the lockfile (same trade-off as deploy). Merges happen via a PR per bead, so CI is the pre-merge check.
-- 2026-11-06: Moved agent config to the projects root. This file replaces the per-repo CLAUDE.md/AGENTS.md.
